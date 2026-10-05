@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0005 — Lock Your Keyframes</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0004-script-and-shot-list.html">← 0004 · Script & Shot List</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0005 · The Lock</div>
+<h1>Lock Your Keyframes</h1>
+<p class="subtitle">Generate one locked still per shot — matched to your sheet — so the slow video step has nothing left to get wrong.</p>
+
+<p>This is the hinge of the whole course. You have a cast (0003) and a shot list (0004). Now you
+turn each shot-list row into one <b>locked still</b> — the exact frame you'll animate next lesson.
+Everything about identity, composition, and palette gets resolved <i>here</i>, cheaply, where
+iteration costs seconds. ~12 min. Your win: <b>a keyframe folder — one locked still per shot.</b></p>
+
+<h2>1. The rule, now operational</h2>
+<blockquote>Resolve consistency on cheap stills first. Only animate frames you've already locked.</blockquote>
+<p>Lesson 0001 stated it; this is where you execute it. On the Spark a video clip costs minutes;
+a still costs seconds. So you do <i>all</i> your deciding on stills: is it the right hero, the right
+pose, the right light? Lock yes/no here — never discover a problem in the video step.</p>
+
+<h2>2. The control stack for a keyframe</h2>
+<p>Per shot, you're combining three things from earlier lessons into one generation:</p>
+<table>
+<tr><th>Layer</th><th>Comes from</th><th>Job in this frame</th></tr>
+<tr><td><b>Identity</b></td><td>Your LoRA or IPAdapter (0003)</td><td>Make the hero the same hero</td></tr>
+<tr><td><b>Composition</b></td><td><a href="../reference/glossary.html">ControlNet</a> (pose/depth/edge)</td><td>Force the shot's framing &amp; camera angle</td></tr>
+<tr><td><b>Content</b></td><td>The shot-list prompt (0004)</td><td>Say what's happening in this beat</td></tr>
+</table>
+<div class="callout"><b>Where ControlNet earns its place.</b> IPAdapter/LoRA hold <i>who</i>; ControlNet
+holds <i>how it's framed</i>. Feed a pose skeleton or depth map so shot 2's wide and shot 3's medium
+are compositions you chose — not the model's random guess.
+<a href="https://dev.to/rashid_inmarketing_19a21d/maintaining-character-consistency-in-comfyui-lora-controlnet-ipadapter-5883">the LoRA + ControlNet + IPAdapter stack</a></div>
+
+<h2>3. Workflow, per shot</h2>
+<div class="step"><div class="n">1</div><div>Start from your Lesson-0002 image graph. Add the identity layer (LoRA loader or IPAdapter + your sheet) and a ControlNet node for composition.</div></div>
+<div class="step"><div class="n">2</div><div>Paste the shot's still-image prompt from the shot list. Set the aspect ratio you locked in 0004.</div></div>
+<div class="step"><div class="n">3</div><div>Generate a few <a href="../reference/glossary.html">seeds</a>. Compare against your sheet: same face/logo? right framing? on-palette?</div></div>
+<div class="step"><div class="n">4</div><div><b>Lock it:</b> save the winner and <i>record its seed + settings</i>. That reproducibility is what lets you regenerate or tweak one frame later without redoing all of them.</div></div>
+<div class="step"><div class="n">5</div><div>Repeat for every row. One locked still per shot, named by shot number.</div></div>
+
+<div class="callout warn"><b>Match the sheet ruthlessly.</b> This is the last cheap place to catch
+drift. If shot 4's hero looks 90% right, fix it <i>now</i> — it will only get more expensive, and
+less fixable, once it's a moving clip.</div>
+
+<h2>4. Your win — the keyframe folder ✍️</h2>
+<div class="callout ok"><b>Done =</b> one locked still per shot-list row, each matching your sheet's
+hero and the shot's framing, each with its seed/settings recorded. Lay them in shot order — that's
+your <b>animatic in stills</b>. If it already reads as a coherent little story, the video step is
+now low-risk.</div>
+
+<h2>5. Retrieval check (eyes closed first)</h2>
+<details><summary>Why resolve framing and identity on a still rather than in the video clip?</summary>
+<p>Stills cost seconds and are fully controllable; a Spark video clip costs minutes and is the least
+controllable step. Catching a problem on the still is cheap; catching it in video is enormously
+expensive.</p></details>
+<details><summary>Which layer holds the hero's identity, and which holds the shot's framing?</summary>
+<p>LoRA/IPAdapter hold <b>identity</b>; <b>ControlNet</b> holds composition/framing. Content comes
+from the shot-list prompt.</p></details>
+<details><summary>Why record each keyframe's seed and settings?</summary>
+<p>Reproducibility — you can regenerate or tweak one frame later without redoing the whole set.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> A keyframe won't match the sheet? ControlNet fighting your
+identity layer? Unsure if your stills-animatic holds together? Paste the frames in shot order and
+we'll read it as a cut. Next lesson:
+<b>image→video on the Spark — animating your locked frames with Wan 2.2, batched overnight.</b></div>
+
+<nav class="lesson-nav bottom"><a href="0004-script-and-shot-list.html">← 0004 · Script & Shot List</a><a class="next" href="0006-make-it-move.html">0006 · Make It Move →</a></nav>
+<footer>
+Lesson 0005 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When you have one locked still per shot, send the set in order — that unlocks Lesson 0006.
+</footer>
+</body></html>

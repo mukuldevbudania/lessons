@@ -3,23 +3,25 @@
    Prints cleanly to paper. Link from every lesson: <link rel="stylesheet" href="../assets/course.css"> */
 
 :root {
-  --ink: #1a1a1a;
-  --paper: #fffff8;      /* Tufte off-white */
-  --muted: #6b6b6b;
-  --rule: #d8d8cf;
-  --accent: #8b2e2e;     /* deep brand red — used sparingly */
-  --accent-soft: #f3e9e9;
-  --ok: #2d6a4f;
-  --warn: #9a6700;
-  --bad: #b42318;
-  --code-bg: #f4f3ec;
+  --ink: #1c222b;        /* cool slate ink */
+  --paper: #fbfcfd;      /* clean cool white */
+  --muted: #68727f;
+  --rule: #e2e6ec;
+  --accent: #3457d5;     /* confident indigo-blue — the brand accent */
+  --accent-soft: #eef2fe;
+  --ok: #0f8a5f;         /* clear teal-green */
+  --warn: #c77d14;       /* amber — a status color, used sparingly */
+  --bad: #d93a3a;
+  --code-bg: #f1f4f8;    /* cool light grey-blue */
   --maxw: 1280px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #e8e6df; --paper: #16161a; --muted: #9a988f;
-    --rule: #33332e; --accent: #e07a7a; --accent-soft: #2a1f1f; --code-bg: #22221d;
+    /* AMOLED — true black so OLED pixels switch off, cool blue accent */
+    --ink: #e9eef6; --paper: #000000; --muted: #8b94a3;
+    --rule: #1c2230; --accent: #4d8dff; --accent-soft: #0a1626; --code-bg: #0a0d14;
+    --ok: #2ad18a; --warn: #e0a63a; --bad: #ff5c5c;
   }
 }
 
@@ -86,6 +88,14 @@ footer { margin-top: 4rem; padding-top: 1.2rem; border-top: 1px solid var(--rule
   color: var(--muted); font-size: 0.85rem; font-family: ui-sans-serif, system-ui, sans-serif; }
 .ask { background: var(--accent-soft); border-radius: 8px; padding: 0.8rem 1.1rem;
   font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; margin-top: 1.5rem; }
+
+.lesson-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.85rem; }
+.lesson-nav.top { margin: 0 0 1.6rem; }
+.lesson-nav.bottom { margin: 2.4rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+.lesson-nav a { border: none; display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 600; }
+.lesson-nav .spacer { flex: 1; }
+.lesson-nav .next { margin-left: auto; }
 
 @media print {
   body { padding: 0; max-width: 100%; font-size: 11pt; }

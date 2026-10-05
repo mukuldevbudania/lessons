@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0003 — Cast Your Hero (The Character / Product Sheet)</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0002-first-still-on-the-spark.html">← 0002 · Your First Still</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0003 · Consistency</div>
+<h1>Cast Your Hero</h1>
+<p class="subtitle">Turn one good still into a repeatable "cast" — the single biggest lever on whether your ad looks like one film or a pile of clips.</p>
+
+<p>You have ComfyUI running and one commercial-safe still (Lesson 0002). Now the real work:
+making that hero — a character <i>or</i> the product itself — come back <b>identical</b> in shot
+after shot. This is the stage that decides everything. ~12 min. Your win: a <b>character/product
+sheet</b> — a multi-angle reference grid you'll match every later frame against.</p>
+
+<h2>1. Why the sheet is the whole game</h2>
+<p>"Cinematic" and "on-brand" both reduce to one word: <b>consistency</b>. A viewer forgives rough
+motion; they do <i>not</i> forgive a hero whose face, logo, or color changes between cuts. The
+<a href="../reference/glossary.html">character sheet / turnaround</a> is your source of truth —
+your "casting". Every keyframe in Lesson 0005 gets judged against it.</p>
+
+<h2>2. Three mechanisms — pick the right one for your hero</h2>
+<p>There is no single consistency button. In 2026 the reliable approach is a <b>stack</b>, and
+which layers you need depends on how much your hero recurs.
+<a href="https://www.apatero.com/blog/comfyui-character-consistency-advanced-workflows-2026">source</a></p>
+<table>
+<tr><th>Mechanism</th><th>What it locks</th><th>Setup cost</th><th>Consistency</th><th>Spark fit</th></tr>
+<tr><td><b>Character sheet + IPAdapter</b></td><td>Overall identity &amp; style from a reference image</td><td>Minutes — no training</td><td>~70–85%</td><td>✅ Trivial (small adapter)</td></tr>
+<tr><td><b>Character LoRA</b> (fine-tune)</td><td>One specific face/body/product, deeply, across any prompt</td><td>A training run (15–30 images)</td><td>~90% — the tightest lock</td><td>✅ Fits; training is a slow overnight batch</td></tr>
+<tr><td><b>ControlNet</b></td><td>Pose &amp; composition (not identity)</td><td>Minutes per shot</td><td>Composition only</td><td>✅ Trivial (small adapter)</td></tr>
+</table>
+<p>All three fit the Spark comfortably — IPAdapter and ControlNet are small adapters, and even
+<i>training</i> a LoRA fits in 128&nbsp;GB (just run it overnight). See the
+<a href="../reference/spark-fit.html">Spark-fit reference</a>.</p>
+<div class="callout"><b>The decision rule.</b> Hero appears in <b>one or two shots</b>, or is a static
+product? → <b>IPAdapter + a good sheet</b> is enough; don't train. Hero is a <b>recurring character
+across the whole spot</b>? → it's worth training a <b>LoRA</b> (~15–30 clean reference images,
+a unique trigger word). ControlNet is orthogonal — add it in Lesson 0005 when you need a specific pose.
+<a href="https://apatero.com/blog/ai-consistent-character-generator-multiple-images-2026">consistency tiers</a></div>
+
+<div class="callout warn"><b>Stacking tripwire.</b> LoRA + IPAdapter both pulling hard late in
+sampling makes the face <i>drift</i> toward the reference. Keep IPAdapter weight moderate and let
+the LoRA own identity. You'll tune this by eye — fix the <a href="../reference/glossary.html">seed</a>
+so you're comparing like with like.
+<a href="https://dev.to/sm1ck/ip-adapter-lora-for-product-catalog-rendering-putting-shop-items-on-ai-characters-5h36">why it drifts</a></div>
+
+<h2>3. Product vs character — same idea, different sheet</h2>
+<table>
+<tr><th></th><th>Recurring character</th><th>Hero product</th></tr>
+<tr><td><b>Sheet is</b></td><td>Turnaround: front / ¾ / side / back + 2–3 expressions</td><td>Turnaround: front / ¾ / top / detail, consistent label &amp; finish</td></tr>
+<tr><td><b>Lock with</b></td><td>LoRA if recurring; else IPAdapter FaceID</td><td>IPAdapter from clean product shots; LoRA only if the product is complex</td></tr>
+<tr><td><b>Watch for</b></td><td>Face/wardrobe drift</td><td>Logo/text mangling — use Qwen-Image, it's strongest at text</td></tr>
+</table>
+
+<h2>4. Your win — build the sheet ✍️</h2>
+<p>From your Lesson-0002 baseline still, produce a reference grid. Minimum viable sheet:</p>
+<div class="step"><div class="n">1</div><div>Pick your hero from the Lesson-0001 brief — character or product. One hero.</div></div>
+<div class="step"><div class="n">2</div><div>Generate a strong "hero shot" on your commercial-safe model (Qwen-Image 20B / FLUX schnell / SDXL). <b>Fix the seed</b> once you like it.</div></div>
+<div class="step"><div class="n">3</div><div>Produce ≥4 angles under the <i>same</i> lighting + palette. Reuse the seed and vary only the angle/expression prompt. Keep the background neutral.</div></div>
+<div class="step"><div class="n">4</div><div>Lay them in one grid image. That grid is your sheet — the thing Lesson 0005 matches against.</div></div>
+<div class="callout ok"><b>Done =</b> a single reference grid where a stranger would say "that's the
+same character/product" across every tile. Not perfect — <i>recognizably one hero.</i></div>
+
+<h2>5. Retrieval check (eyes closed first)</h2>
+<details><summary>Your hero appears in only one shot and is a static product. Train a LoRA?</summary>
+<p><b>No.</b> IPAdapter + a clean sheet is enough. Reserve a LoRA for a character recurring across
+the whole spot, where the ~90% lock pays for the training run.</p></details>
+<details><summary>Why fix the seed while building the sheet?</summary>
+<p>So you're varying <i>only</i> the thing you mean to (angle, expression) and comparing like with
+like. A changing seed changes everything, hiding whether your consistency controls are working.</p></details>
+<details><summary>Why prefer Qwen-Image when the hero is a product with a logo?</summary>
+<p>Qwen-Image is the strongest commercial-safe model at rendering legible text/typography — logos
+and labels mangle less.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> Not sure whether your hero warrants a LoRA? Face drifting when you
+stack IPAdapter? Logo turning to mush? Paste a tile from your sheet and we'll debug it. Next lesson:
+<b>the script + shot list — turning the brand brief into a shot-by-shot checklist of images to make.</b></div>
+
+<nav class="lesson-nav bottom"><a href="0002-first-still-on-the-spark.html">← 0002 · Your First Still</a><a class="next" href="0004-script-and-shot-list.html">0004 · Script & Shot List →</a></nav>
+<footer>
+Lesson 0003 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When your sheet reads as one hero across ≥4 tiles, send it — that unlocks Lesson 0004.
+</footer>
+</body></html>

@@ -22,6 +22,10 @@ Vetted sources for grounding lessons. Trust tier: ⭐⭐⭐ primary/official, �
 
 ## Runner / orchestration
 - ⭐⭐⭐ ComfyUI (github.com/comfyanonymous/ComfyUI) — node graph; native support for Wan/Hunyuan/LTX. The hub of the whole pipeline.
+- ⭐⭐⭐ [NVIDIA DGX Spark ComfyUI playbook — Image Gen Quick Start](https://build.nvidia.com/spark/comfyui/image-gen-quick-start) — official install for ARM64 + Blackwell (sm_121, CUDA 13): setup/launch scripts + pinned manual steps (ComfyUI v0.33.2, PyTorch cu130). Used in Lesson 0002.
+- ⭐⭐⭐ [Qwen-Image ComfyUI native workflow (comfy.org docs)](https://docs.comfy.org/tutorials/image/qwen/qwen-image) — the 20B Apache-2.0 base-model workflow (commercial-safe baseline).
+- ⭐⭐ [Qwen-Image-2.1 licensing wall (note.com)](https://note.com/ai_driven/n/n02680c93c735?hl=en) — flags that the newer 7B Qwen-Image-2.1 ships under the Qwen *Research* License (non-commercial), unlike the Apache-2.0 20B base.
+- ⭐⭐ [DGX-Spark-ComfyUI Docker setup (luix93)](https://github.com/luix93/DGX-Spark-ComfyUI) — Spark-tuned container (CUDA 13.1, cu130 wheels, SageAttention 2, unified-memory flags) as an alternative to the host install.
 - ⭐⭐ [Run HunyuanVideo in ComfyUI (thundercompute)](https://www.thundercompute.com/blog/hunyuan-video-comfyui)
 
 ## Editing / finishing

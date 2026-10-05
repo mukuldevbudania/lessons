@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0007 — Clean It Up (Upscale &amp; Interpolate)</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0006-make-it-move.html">← 0006 · Make It Move</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0007 · Finishing the Pixels</div>
+<h1>Clean It Up</h1>
+<p class="subtitle">Take your fast, low-res draft clips to delivery resolution and smooth frame rate — the cheap polish that happens after generation, not during.</p>
+
+<p>In Lesson 0006 you generated at 480p and short durations on purpose — to iterate fast and not
+pay for quality on takes you might reject. Now that your shots are <i>approved</i>, you lift them to
+delivery spec. ~8 min. Your win: <b>one approved clip at 1080p, smooth.</b></p>
+
+<h2>1. Why generation and finishing are separate steps</h2>
+<p>Generating at full 1080p / high-fps on the Spark is slow and wasteful when you're still deciding.
+So the pipeline splits it: <b>generate cheap, finish once.</b> Upscaling and frame interpolation are
+comparatively light, deterministic, and run on your <i>final</i> picks only.</p>
+
+<h2>2. The two moves</h2>
+<table>
+<tr><th>Move</th><th>What it does</th><th>Tool (in ComfyUI)</th><th>Spark fit</th></tr>
+<tr><td><b>Upscale</b></td><td>480p/720p → 1080p (or higher), restoring detail</td><td>A latent/model upscaler node (e.g. an ESRGAN-family or diffusion upscaler)</td><td>✅ Trivial — light</td></tr>
+<tr><td><b>Interpolate</b></td><td>Fills in frames: e.g. 12–16fps → smooth 24–30fps</td><td>Frame-interpolation node — <b>RIFE</b> or <b>FILM</b></td><td>✅ Trivial — light</td></tr>
+</table>
+<p>Both are small, light models — they fit the Spark trivially. The only cost is wall-clock on a
+full set of clips, so batch them. (<a href="../reference/spark-fit.html">Spark-fit reference</a>.)</p>
+<div class="callout"><b>Order matters.</b> Interpolate <i>then</i> upscale is usually cheaper (fewer
+large frames to upscale), but either order works — the point is both happen <b>after</b> the shot is
+locked, never as part of the slow generation loop.</div>
+
+<h2>3. Keep it a batch job too</h2>
+<div class="callout warn"><b>Still the Spark.</b> Upscaling a full set of clips is also minutes-per-clip
+work. Treat it like the video renders: queue the whole approved set and let it run. You should never
+be sitting watching an upscale bar — that time is for prompting the next thing or writing in Resolve.</div>
+
+<h2>4. Don't over-polish</h2>
+<p>Target <b>exactly</b> your delivery spec from the brief — if it's 9:16 social, 1080×1920 at 30fps
+is plenty; 4K is wasted render time nobody will see on a phone. Match the platform, stop there.</p>
+
+<h2>5. Your win — one clip at spec ✍️</h2>
+<div class="step"><div class="n">1</div><div>Take one approved 480p clip from Lesson 0006.</div></div>
+<div class="step"><div class="n">2</div><div>Run frame interpolation (RIFE/FILM) to your target fps, then upscale to your delivery resolution.</div></div>
+<div class="step"><div class="n">3</div><div>Eyeball it: detail restored without a plastic/over-sharpened look? motion smooth without warping artifacts? If yes, batch the rest.</div></div>
+<div class="callout ok"><b>Done =</b> one approved shot at your exact delivery resolution and fps,
+clean enough to sit on a timeline. The remaining shots are the same batch recipe.</div>
+
+<h2>6. Retrieval check (eyes closed first)</h2>
+<details><summary>Why generate at 480p and upscale later instead of generating at 1080p directly?</summary>
+<p>You iterate on many takes but keep few. Generating cheap and finishing only the approved picks
+avoids paying full-resolution render cost on takes you reject — crucial on the bandwidth-bound Spark.</p></details>
+<details><summary>What does frame interpolation give you, and which tools?</summary>
+<p>Smoother motion by synthesizing in-between frames (e.g. 12→24fps). RIFE or FILM.</p></details>
+<details><summary>What resolution should you target?</summary>
+<p>Exactly your brief's delivery spec and no more — 4K for a 9:16 phone ad is wasted render time.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> Upscaler making faces look waxy? Interpolation warping fast
+motion? Not sure what fps/res your target platform wants? Tell me the platform and I'll give you the
+spec. Next lesson:
+<b>edit + sound in DaVinci Resolve — cutting your clips to the beat sheet and giving them a soundtrack.</b></div>
+
+<nav class="lesson-nav bottom"><a href="0006-make-it-move.html">← 0006 · Make It Move</a><a class="next" href="0008-cut-and-score.html">0008 · Cut & Score →</a></nav>
+<footer>
+Lesson 0007 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When one clip sits clean at delivery spec, say "done" — that unlocks Lesson 0008.
+</footer>
+</body></html>

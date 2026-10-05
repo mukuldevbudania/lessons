@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — Does It Fit the Spark?</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+
+<div class="kicker">Reference · Hardware fit</div>
+<h1>Does It Fit the Spark?</h1>
+<p class="subtitle">Every model this course recommends, checked against your DGX Spark. The rule: it must FIT, and you must know whether it's fast or a batch job.</p>
+
+<h2>The Spark in one paragraph</h2>
+<p>Your <b>DGX Spark</b> has <b>128&nbsp;GB unified memory</b> — far more than any consumer GPU (an
+RTX 5090 has 32&nbsp;GB). So models that <i>rule out gaming cards</i> still load fine here. The
+constraint is <b>bandwidth</b> (~273&nbsp;GB/s): weights move slowly, so big models <b>fit but run
+slowly</b>. That single fact is why this course is built around <b>cheap stills first</b> and
+<b>overnight batching</b> for anything heavy.</p>
+<div class="callout"><b>Read the two columns separately.</b> <b>Fit</b> = does it load in 128&nbsp;GB
+(almost always yes). <b>Speed</b> = interactive vs batch-overnight. Nothing in this course fails the
+fit test; plan your time around the speed column.</div>
+
+<h2>Images (Lessons 0002–0005)</h2>
+<table>
+<tr><th>Model</th><th>Class</th><th>Fit</th><th>Speed on Spark</th><th>License</th></tr>
+<tr><td><b>Qwen-Image (20B base)</b></td><td>20B MMDiT</td><td>✅ Easy</td><td>Workable; your text/logo workhorse</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>FLUX.1 [schnell]</b></td><td>12B</td><td>✅ Easy</td><td>Fast (few-step)</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>SDXL</b></td><td>3.5B</td><td>✅ Trivial</td><td>Fast — deepest LoRA/ControlNet ecosystem</td><td>Stability Community ✅*</td></tr>
+<tr><td>FLUX.1 [dev]</td><td>12B</td><td>✅ fits</td><td>—</td><td><b>❌ non-commercial — don't ship</b></td></tr>
+<tr><td>Qwen-Image-2.1 (7B)</td><td>7B</td><td>✅ fits</td><td>—</td><td><b>❌ Research License</b></td></tr>
+</table>
+<p>Consistency add-ons (Lessons 0003/0005): <b>LoRA</b> inference, <b>IPAdapter</b>, and
+<b>ControlNet</b> are all small adapters on top of a base model — negligible extra memory,
+<b>fit trivially</b>. <b>Training</b> a character LoRA fits too (the Spark's 128&nbsp;GB covers it)
+but is a slow batch job — run it overnight on 15–30 images.</p>
+
+<h2>Video (Lessons 0006–0007)</h2>
+<table>
+<tr><th>Model</th><th>Class</th><th>Fit</th><th>Speed on Spark</th><th>License</th></tr>
+<tr><td><b>Wan 2.2 14B I2V</b></td><td>27B total / 14B active (MoE)</td><td>✅ Easy (needs 65–80&nbsp;GB raw — gaming cards can't; Spark can)</td><td>Minutes/clip — <b>batch overnight</b></td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>Wan 2.2 5B (TI2V)</b></td><td>5B</td><td>✅ Easy</td><td>Fast — iterate drafts here</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>LTX-Video</b></td><td>Light</td><td>✅ Trivial</td><td>Fastest — motion tests</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>HunyuanVideo 1.5</b></td><td>8.3B</td><td>✅ Easy</td><td>Workable; strong motion</td><td>Apache-2.0 ✅</td></tr>
+<tr><td>Upscale (ESRGAN-family)</td><td>Light</td><td>✅ Trivial</td><td>Light batch</td><td>varies — use OSS ✅</td></tr>
+<tr><td>Interpolate (RIFE / FILM)</td><td>Light</td><td>✅ Trivial</td><td>Light batch</td><td>OSS ✅</td></tr>
+</table>
+
+<h2>Lip-sync / talking hero (Milestone 2 — Lesson 0010)</h2>
+<table>
+<tr><th>Model</th><th>Job</th><th>Fit</th><th>Speed on Spark</th><th>License</th></tr>
+<tr><td><b>Wan 2.2 S2V (14B)</b></td><td>Audio→talking video (generation)</td><td>✅ Easy</td><td>Batch — same class as Wan I2V</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>OmniAvatar 1.3B</b></td><td>Audio→talking video</td><td>✅ Trivial</td><td><b>Fast</b> — iterate here</td><td>Wan-lineage ✅ (verify)</td></tr>
+<tr><td><b>InfiniteTalk / MultiTalk</b></td><td>Long talking-head</td><td>✅ Easy</td><td>Batch</td><td>Wan-lineage ✅ (verify)</td></tr>
+<tr><td><b>LatentSync 1.5</b></td><td>Re-sync mouth of existing video</td><td>✅ Trivial (~7.8&nbsp;GB)</td><td><b>Fast</b></td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>MuseTalk</b></td><td>Re-sync mouth (real-time)</td><td>✅ Trivial</td><td><b>Fast</b></td><td>MIT ✅</td></tr>
+<tr><td>Wav2Lip</td><td>Re-sync mouth (classic)</td><td>✅ Trivial</td><td>Fast</td><td>⚠️ verify before commercial use</td></tr>
+</table>
+
+<div class="callout warn"><b>Two gates, always, before you adopt any model:</b> (1) <b>Fit</b> — on the
+Spark this is nearly always yes; the real question is batch-vs-interactive. (2) <b>License</b> — a
+brand ad is commercial, so the weight's own card must allow it. A model can pass the hardware gate
+and still fail the licensing gate (FLUX.1 [dev], Qwen-Image-2.1, Wav2Lip). Both must be green.</div>
+
+<footer>
+Spark-fit reference · part of the AI Brand-Ad course · back to the
+<a href="pipeline.html">pipeline map</a> · <a href="glossary.html">glossary</a>.<br>
+* SDXL under the Stability Community License — commercial-OK subject to its conditions (revenue
+threshold). A model missing here? Ask me and I'll check its fit + license and add it.
+</footer>
+</body></html>

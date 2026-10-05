@@ -4,6 +4,7 @@
 <title>Lesson 0001 — The Shape of the Pipeline</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head><body>
+<nav class="lesson-nav top"><a href="../index.html">↑ All lessons</a><a class="next" href="../index.html">All lessons ▸</a></nav>
 
 <div class="kicker">Lesson 0001 · Foundations</div>
 <h1>The Shape of the Pipeline</h1>
@@ -45,12 +46,14 @@ this reason: it's your "casting" — the source of truth every keyframe must mat
 <b>consistency</b> — same character, same light, same palette, shot after shot. Three tools buy it:
 a <b>character LoRA</b>, an <b>IPAdapter</b> reference, and <b>ControlNet</b> for composition — plus
 a unifying <b>color grade</b> at the end. (All defined in the <a href="../reference/glossary.html">glossary</a>.)
-You'll meet each in later lessons.</p>
+You'll meet each in later lessons.</div>
 
 <h2>3. Your two hard constraints (know them cold)</h2>
 <div class="callout warn"><b>Hardware.</b> DGX Spark fits big models (128GB) but is bandwidth-bound
 (~273 GB/s). Translation: <i>iterate on stills by day, batch video renders overnight.</i> This isn't
-a limitation to fight — it's the rhythm the workflow is built around.
+a limitation to fight — it's the rhythm the workflow is built around. Every model this course
+recommends is checked against your Spark in the <a href="../reference/spark-fit.html">Spark-fit
+reference</a> — it must FIT (128GB covers it) and you must know if it's interactive or a batch job.
 <a href="https://intuitionlabs.ai/articles/nvidia-dgx-spark-review">why</a></div>
 <div class="callout bad"><b>Licensing.</b> A brand ad is commercial. <b>FLUX.1 [dev] is non-commercial — never ship it.</b>
 Use Qwen-Image, FLUX.1 [schnell], or SDXL for images; Wan 2.2 / HunyuanVideo 1.5 / LTX-Video for video.
@@ -88,6 +91,7 @@ once makes the "lock then animate" rule click. We'll pick the exact workflow tog
 your brand, or want me to draft a first version to react to? Just ask in chat. Next lesson:
 <b>get ComfyUI running on the Spark and generate your first commercial-safe still.</b></div>
 
+<nav class="lesson-nav bottom"><a href="../index.html">↑ All lessons</a><a class="next" href="0002-first-still-on-the-spark.html">0002 · Your First Still →</a></nav>
 <footer>
 Lesson 0001 · <a href="../MISSION.md">mission</a> ·
 <a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0006 — Make It Move (Image→Video on the Spark)</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0005-lock-your-keyframes.html">← 0005 · Lock Your Keyframes</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0006 · Motion</div>
+<h1>Make It Move</h1>
+<p class="subtitle">Animate your locked keyframes with Wan 2.2 — and build the batch/overnight rhythm the Spark's bandwidth forces on you.</p>
+
+<p>You locked a still per shot (0005). Now you hand each locked frame to a video model and get a
+clip. The discipline here is <b>restraint</b>: you're not generating from scratch, you're adding
+motion to a frame you already approved. ~12 min. Your win: <b>your first shot, moving</b> — one
+keyframe animated into a 3–5s clip.</p>
+
+<h2>1. Image-to-video, never text-to-video</h2>
+<p>This is the payoff of the whole "lock first" approach. You use <b>I2V</b>
+(<a href="../reference/glossary.html">image-to-video</a>): the locked keyframe is frame one, and a
+short <i>motion</i> prompt says how it should move. The identity and composition are already baked
+into the frame — the model only has to animate, not invent.
+<a href="https://stable-diffusion-art.com/wan-2-2-image-to-video/">Wan 2.2 I2V</a></p>
+
+<h2>2. Wan 2.2 is your workhorse</h2>
+<p>Commercial-safe (Apache-2.0), native ComfyUI templates, strong motion and camera moves. Load it
+from <b>Workflow → Browse Templates → Video → "Wan2.2 14B I2V"</b>.
+<a href="https://docs.comfy.org/tutorials/video/wan/wan2_2">official native workflow</a></p>
+<table>
+<tr><th>Model</th><th>Use it for</th><th>Spark note</th></tr>
+<tr><td><b>Wan 2.2 14B I2V</b></td><td>Your hero shots — best quality/motion</td><td>✅ Fits (wants 65–80GB raw — gaming cards can't, Spark's 128GB can); heaviest, batch overnight</td></tr>
+<tr><td><b>Wan 2.2 5B (TI2V)</b></td><td>Fast drafts / blocking a shot</td><td>✅ Fits easily; lighter, quicker iteration</td></tr>
+<tr><td><b>HunyuanVideo 1.5</b></td><td>Alt workhorse — strong motion</td><td>✅ Fits (8.3B); workable</td></tr>
+<tr><td><b>LTX-Video</b></td><td>Throwaway motion tests</td><td>✅ Fits; fastest, lower ceiling</td></tr>
+</table>
+<p>This is where the Spark earns its keep: Wan 14B at 720p needs 65–80&nbsp;GB — it's ruled out on
+<i>every</i> consumer GPU, but your 128&nbsp;GB loads it fine. Fit isn't the issue; speed is, so you
+batch. Full table: <a href="../reference/spark-fit.html">Spark-fit reference</a>.</p>
+
+<h2>3. The Spark rhythm — this is the lesson's real idea</h2>
+<div class="callout warn"><b>Fits but slow.</b> 128&nbsp;GB means Wan 14B loads fine; ~273&nbsp;GB/s
+bandwidth means each clip takes real minutes. So the workflow is <b>not</b> interactive scrubbing.
+It's: <i>iterate motion prompts on cheap/low-res or the 5B model by day, then queue your final 14B
+renders as an overnight batch.</i>
+<a href="https://localaimaster.com/blog/wan-video-generation-guide">why batch</a></div>
+<div class="callout"><b>Two speed levers.</b> (1) Generate at <b>480p first</b>, upscale later
+(Lesson 0007) — don't pay for 1080p on a take you might reject. (2) A <b>Lightning / fast LoRA</b>
+cuts step count dramatically (e.g. a handful of steps instead of 20+) for drafts; drop it for the
+final render if you want maximum quality.
+<a href="https://www.nextdiffusion.ai/tutorials/fast-image-to-video-comfyui-wan2-2-lightx2v-lora">fast I2V with Lightning LoRA</a></div>
+
+<h2>4. Writing a motion prompt</h2>
+<p>Describe <i>motion and camera</i>, not content (the content is already in the frame). Pull the
+camera move straight from your shot-list row:</p>
+<pre><code>slow push in on the hero, subtle breathing, hair drifts,
+shallow depth of field, cinematic, 24fps
+</code></pre>
+<p>Keep motions small for a first pass — big motion is where identity drifts and limbs mangle.
+Short clips (3–5s) that cut well beat one long wandering take.</p>
+
+<h2>5. Your win — one shot, moving ✍️</h2>
+<div class="step"><div class="n">1</div><div>Load the Wan2.2 I2V template. Set your locked keyframe as the input image.</div></div>
+<div class="step"><div class="n">2</div><div>Write a small motion prompt from that shot's camera move. Generate at 480p, short duration.</div></div>
+<div class="step"><div class="n">3</div><div>Judge: did identity hold? Is the motion believable? If yes, <b>queue the rest as a batch</b> and let the Spark run.</div></div>
+<div class="callout ok"><b>Done =</b> one keyframe turned into a short clip where your hero still looks
+like your hero and the motion matches the shot's intent. That proves the I2V path end-to-end; the
+remaining shots are just the same recipe, batched.</div>
+
+<h2>6. Retrieval check (eyes closed first)</h2>
+<details><summary>Why I2V instead of T2V for this pipeline?</summary>
+<p>The keyframe already encodes approved identity + composition. I2V only animates it, so the model
+can't re-roll the hero's face or the framing. T2V would reinvent everything each clip.</p></details>
+<details><summary>What's the Spark-imposed working rhythm, and why?</summary>
+<p>Iterate motion on fast/low-res (5B, 480p, Lightning LoRA) by day; batch final 14B renders
+overnight. Because the Spark is bandwidth-bound — clips are minutes, not seconds, so interactive
+scrubbing isn't viable.</p></details>
+<details><summary>Why keep first-pass motions small?</summary>
+<p>Large motion is where identity drifts and anatomy breaks. Small, well-cut motion looks more
+cinematic and fails less.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> Clips taking forever? Identity drifting once it moves? Unsure
+whether to batch 480p or 720p? Tell me your render times and I'll help you tune the batch. Next lesson:
+<b>upscale + interpolate — taking those draft clips to clean 1080p / smooth fps.</b></div>
+
+<nav class="lesson-nav bottom"><a href="0005-lock-your-keyframes.html">← 0005 · Lock Your Keyframes</a><a class="next" href="0007-clean-it-up.html">0007 · Clean It Up →</a></nav>
+<footer>
+Lesson 0006 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When one keyframe is moving and holding identity, say "done" — that unlocks Lesson 0007.
+</footer>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0004 — Script &amp; Shot List</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0003-cast-your-hero.html">← 0003 · Cast Your Hero</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0004 · Structure</div>
+<h1>Script &amp; Shot List</h1>
+<p class="subtitle">Turn the brief into a timed beat sheet and a shot-by-shot table — the checklist that removes all improvisation from generation.</p>
+
+<p>You have a brief (0001) and a cast (0003). This is the lesson with <b>no GPU</b> — it's you and
+Claude. And it's the one that most separates an <i>ad</i> from a pretty montage. ~12 min. Your win:
+a <b>shot list</b> — a table where every row is one image you'll generate, with its prompt already written.</p>
+
+<h2>1. Structure is what makes 20 seconds feel like an ad</h2>
+<p>A spot is not a highlight reel. It has a shape. The reliable one for short brand work:</p>
+<blockquote>Hook → Problem → Product → Payoff → CTA</blockquote>
+<p>Those are your <a href="../reference/glossary.html">beats</a>. In 20 seconds that might be
+4s / 4s / 5s / 4s / 3s. Decide the beats <i>before</i> any shot, because the beats dictate how many
+shots you need and what each one must accomplish.</p>
+
+<h2>2. Use Claude as your writers' room — but keep the reins</h2>
+<p>Claude ($20 Pro) is excellent at this and it's the sanctioned writing tool for the mission.
+Give it everything it needs in one paste:</p>
+<pre><code>Here is my brand brief: [paste the 7 lines from Lesson 0001].
+Write a [20]s ad as a BEAT SHEET: hook, problem, product, payoff, CTA,
+with a duration (seconds) per beat. Terse. Then stop — I'll react before
+we do shots.</code></pre>
+<div class="callout"><b>Why beat sheet first, shots second.</b> If you ask for shots immediately
+you get improvisation dressed as structure. Lock the beats, push back on them, <i>then</i> expand
+each beat into shots. One message per stage keeps you in control.</div>
+
+<h2>3. Expand beats into a shot list</h2>
+<p>Now the real artifact. One row per shot. This <i>is</i> your production plan — the still-image
+prompt column feeds Lesson 0005 directly.</p>
+<table>
+<tr><th>#</th><th>Beat</th><th>Size</th><th>Camera</th><th>Dur</th><th>Description</th><th>Still-image prompt</th></tr>
+<tr><td>1</td><td>Hook</td><td>ECU</td><td>slow push</td><td>3s</td><td>Hero's eyes open</td><td>"&lt;hero, from sheet&gt;, extreme close-up, …"</td></tr>
+<tr><td>2</td><td>Problem</td><td>WS</td><td>static</td><td>4s</td><td>Hero small in a grey world</td><td>"&lt;hero&gt;, wide, muted palette, …"</td></tr>
+<tr><td>3</td><td>Product</td><td>MS</td><td>handheld</td><td>5s</td><td>Product revealed</td><td>"&lt;product, from sheet&gt;, medium, warm key light, …"</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+</table>
+<div class="callout warn"><b>Vary your shot sizes.</b> WS / MS / CU / ECU in deliberate rhythm —
+not six medium shots in a row. Variety <i>is</i> pacing. And respect the
+<a href="../reference/glossary.html">180° rule</a> so cuts don't flip your hero's screen direction.</div>
+
+<h2>4. Two things to decide now (they ripple downstream)</h2>
+<table>
+<tr><td><b>Aspect ratio</b></td><td>9:16 (social), 16:9 (web/TV), or 1:1. Pick from your brief — it sets the resolution of every still and clip you generate next.</td></tr>
+<tr><td><b>Shot count</b></td><td>Milestone 1 needs the hero visibly the same across <b>≥4 shots</b>. Aim for 5–7 total so you have cutting choices in Resolve.</td></tr>
+<tr><td><b>Voice: narration, not dialogue</b></td><td>If your ad has a voice, make it a <b>voiceover</b> over visuals — <i>not</i> a hero talking to camera. See the tripwire below.</td></tr>
+</table>
+
+<div class="callout bad"><b>Lip-sync tripwire — decide this NOW, it shapes your shots.</b> The video
+step (Wan 2.2 I2V, Lesson 0006) animates <i>motion</i>, not mouth-to-audio. It does <b>not</b>
+lip-sync. So if you shoot your hero talking to camera and drop a voice over it, the mouth won't
+match and it will look wrong. The fix is a writing choice, and it's how most AI ads sidestep this:
+<ul>
+<li><b>Voiceover (recommended):</b> the voice is <i>narration</i> riding over acting/product shots. Keep the camera off any talking mouth. No lip-sync needed — this is how most real ads work anyway.</li>
+<li><b>No dialogue:</b> music + on-screen text/CTA, like most social ads. Zero voice problem.</li>
+<li><b>Hero talks to camera:</b> needs a dedicated lip-sync model (Wan 2.2 <b>S2V</b> speech-to-video, or tools like LatentSync — all <a href="../reference/spark-fit.html">Spark-fit</a>). <b>Milestone 2 (Lesson 0010) — don't attempt it on your first spot.</b></li>
+</ul>
+Write your script so the voice is narration, and this problem never appears.</div>
+
+<h2>5. Your win — the shot list ✍️</h2>
+<div class="callout ok"><b>Done =</b> a table of 5–7 rows, each with shot #, size, camera move,
+duration, description, and a written still-image prompt that references your sheet's hero. Durations
+sum to your target length. Bring it back — we'll pressure-test pacing and the 180° line together.</div>
+
+<h2>6. Retrieval check (eyes closed first)</h2>
+<details><summary>Why write the beat sheet before the shot list?</summary>
+<p>Beats define the ad's shape and how many shots each stretch needs. Jumping straight to shots
+produces improvisation, not structure. Lock beats, critique them, then expand.</p></details>
+<details><summary>What does the "still-image prompt" column feed?</summary>
+<p>Lesson 0005 — keyframe stills. Each row's prompt becomes the exact still you generate and lock
+before animating.</p></details>
+<details><summary>Minimum shots where the hero must be identical, for milestone 1?</summary>
+<p>≥4. Aim for 5–7 total for cutting flexibility.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> Want me to react to your beat sheet, tighten a flabby middle,
+or sanity-check your shot sizes and 180° line? Paste the table. Next lesson:
+<b>keyframe stills — generating and locking one still per shot, matched to your sheet.</b></div>
+
+<nav class="lesson-nav bottom"><a href="0003-cast-your-hero.html">← 0003 · Cast Your Hero</a><a class="next" href="0005-lock-your-keyframes.html">0005 · Lock Your Keyframes →</a></nav>
+<footer>
+Lesson 0004 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When your shot list has 5–7 complete rows, send it — that unlocks Lesson 0005.
+</footer>
+</body></html>

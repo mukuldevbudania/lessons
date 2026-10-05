@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0002 — Your First Still on the Spark</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0001-shape-of-the-pipeline.html">← 0001 · Shape of the Pipeline</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0002 · Setup &amp; First Pixels</div>
+<h1>Your First Still on the Spark</h1>
+<p class="subtitle">Get ComfyUI running on the DGX Spark and generate one real, commercial-safe image — the first pixels of your pipeline.</p>
+
+<p>Lesson 0001 gave you the map and the one rule: <i>lock consistency on cheap stills before you
+ever animate.</i> This lesson is where you make the first still. ~15 minutes of reading, then an
+install you can kick off and walk away from. Your win: <b>one generated image, from a model you
+can legally ship</b>, running locally on your own hardware — no API, no per-image fee.</p>
+
+<h2>1. Why ComfyUI is the whole hub</h2>
+<p>Every stage from here on — character sheets, keyframe stills, image→video, upscaling — runs
+through <b>ComfyUI</b>. It's a node graph, not a prompt box: you wire a model → sampler → VAE →
+save, and every open image/video model (SDXL, FLUX, Qwen-Image, Wan 2.2, HunyuanVideo, LTX) plugs
+into the same canvas. Learn one tool, run them all.
+<a href="https://www.promptzone.com/tomas_novak/comfyui-2026-the-complete-guide-to-power-user-ai-image-generation-1g17">why it's the standard</a></p>
+
+<div class="callout"><b>Mental model.</b> A ComfyUI <b>workflow</b> is a saved graph of nodes. A
+<b>template</b> is a ready-made workflow that ships with the model. You'll start from a template,
+run it unchanged, then edit one node — exactly how you'll build every later stage.</div>
+
+<h2>2. Install — use NVIDIA's own playbook</h2>
+<p>The Spark is awkward hardware (ARM64 + Blackwell GB10, <code>sm_121</code>, CUDA 13) and the
+generic install guides don't account for it. Don't fight that — NVIDIA publishes an
+<b>official DGX Spark ComfyUI playbook</b>. Use it.
+<a href="https://build.nvidia.com/spark/comfyui/image-gen-quick-start">official quick-start</a></p>
+
+<p>The fast path is their one-line setup script (prereq check → venv → PyTorch cu130 → ComfyUI →
+deps → a ~20&nbsp;GB starter model), run on the Spark itself:</p>
+<pre><code>curl -fsSL "https://raw.githubusercontent.com/NVIDIA/dgx-spark-playbooks/refs/heads/main/nvidia/playbook-comfyui/assets/setup.sh" | bash</code></pre>
+<p>Then launch from the <b>same directory</b> (it expects <code>comfyui-env/</code> and
+<code>ComfyUI/</code> there):</p>
+<pre><code>curl -fsSL "https://raw.githubusercontent.com/NVIDIA/dgx-spark-playbooks/refs/heads/main/nvidia/playbook-comfyui/assets/launch.sh" | bash</code></pre>
+
+<div class="callout warn"><b>You're on infra you know — treat it that way.</b> Piping a remote
+<code>curl … | bash</code> is convenient but it's remote code on your box. The playbook also
+documents the manual Steps 1–7 (venv → <code>pip install torch --index-url …/cu130</code> →
+<code>git clone --branch v0.33.2 …/ComfyUI</code> → <code>pip install -r requirements.txt</code> →
+<code>python main.py --listen 0.0.0.0</code>). Read <code>setup.sh</code> once, then decide. For a
+long-term brand pipeline, prefer the pinned manual steps or one of the Spark-tuned Docker setups
+over an unpinned remote script.
+<a href="https://github.com/luix93/DGX-Spark-ComfyUI">a Spark-tuned Docker setup</a></div>
+
+<h2>3. Reach the UI</h2>
+<p>ComfyUI binds to <code>0.0.0.0:8188</code>. From the Spark itself that's
+<code>http://localhost:8188</code>; from your laptop it's <code>http://&lt;SPARK_IP&gt;:8188</code>.
+Confirm it's up before opening a browser:</p>
+<pre><code>curl -I http://localhost:8188   # expect: HTTP/1.1 200 OK</code></pre>
+<div class="callout warn"><b>macOS gotcha.</b> If the page won't load from your Mac, grant your
+browser <b>System Settings → Privacy &amp; Security → Local Network</b> access — macOS silently
+blocks local-network connections until you do.</div>
+
+<h2>4. The licensing fork — read before you pick a model</h2>
+<p>This is exactly the tripwire this course exists to catch. The <i>name</i> "Qwen-Image" now
+covers two different licenses, and only one is safe for a brand ad:</p>
+<table>
+<tr><th>Model</th><th>Size</th><th>License</th><th>Ship a brand ad?</th><th>Spark fit</th></tr>
+<tr><td><b>Qwen-Image</b> (base)</td><td>20B MMDiT</td><td>Apache-2.0</td><td>✅ Yes</td><td>✅ Fits, workable</td></tr>
+<tr><td><b>Qwen-Image-2.1</b> (Sept 2026)</td><td>7B</td><td>Qwen <b>Research</b> License</td><td>❌ No — non-commercial</td><td>(fits, but ❌ license)</td></tr>
+<tr><td><b>FLUX.1 [schnell]</b></td><td>12B</td><td>Apache-2.0</td><td>✅ Yes</td><td>✅ Fits, fast</td></tr>
+<tr><td><b>FLUX.1 [dev]</b></td><td>12B</td><td>Non-commercial</td><td>❌ No</td><td>(fits, but ❌ license)</td></tr>
+<tr><td><b>SDXL</b></td><td>3.5B</td><td>Stability Community</td><td>✅ Yes (with conditions)</td><td>✅ Fits, fast</td></tr>
+</table>
+<p>All five <b>fit</b> the Spark easily — 128&nbsp;GB dwarfs their size. Fit is never the problem
+here; the <a href="../reference/spark-fit.html">Spark-fit reference</a> tracks every model's fit +
+speed + license in one place.</p>
+<div class="callout bad"><b>The rule, restated.</b> A newer, smaller, faster model is <i>not</i>
+automatically the one to use. The license card decides, every time. The 7B Qwen-Image-2.1 is
+tempting (lighter, faster) and <b>wrong for shipping brand work</b>. Verify the weight's license
+page before you commit to it.
+<a href="https://note.com/ai_driven/n/n02680c93c735?hl=en">the 2.1 licensing wall</a></div>
+
+<h2>5. Your win — generate one still ✍️</h2>
+<p>Two valid paths. Pick based on what you want to prove today.</p>
+
+<h3>Path A — fastest first pixels (NVIDIA's starter)</h3>
+<p>The playbook ships with <b>Z-Image-Turbo</b> and a one-click template. Run it exactly as the
+quick-start Step 9 says: <b>Templates → Image → "Z-Image-Turbo: Text to Image" → Run.</b> You get
+an image in ~30s and you've proven the whole stack works end to end. Use this to <i>de-risk the
+install</i> — don't ship from it until you've checked its license card for your use.</p>
+
+<h3>Path B — your real commercial-safe baseline (recommended to end on)</h3>
+<p>Load the <b>Qwen-Image (20B, Apache-2.0)</b> native template. ComfyUI will flag any missing
+weights and name both the Hugging Face source and the <code>models/</code> subfolder each belongs
+in — download those, refresh, and Run.
+<a href="https://docs.comfy.org/tutorials/image/qwen/qwen-image">official Qwen-Image workflow</a></p>
+
+<p>For your <i>first</i> prompt, don't chase art. Prove <b>control</b> — generate something that
+rhymes with your brief from Lesson 0001. A template:</p>
+<pre><code>&lt;hero or product from your brief&gt;, &lt;one tone adjective&gt; lighting,
+clean studio background, product-photography composition,
+sharp focus, 35mm, &lt;aspect ratio from your brief&gt;</code></pre>
+
+<div class="callout ok"><b>What "done" looks like for this lesson:</b> one <code>.png</code> saved
+by ComfyUI, from a model whose license you've confirmed is commercial-OK, that loosely matches your
+brief's hero + tone. That's it. Not beautiful — <i>yours, legal, and local.</i></div>
+
+<h2>6. Retrieval check (eyes closed first)</h2>
+<details><summary>Two models are both called "Qwen-Image." Which can you ship a brand ad with, and how do you know?</summary>
+<p>The <b>20B base</b> model (Apache-2.0). <b>Not</b> Qwen-Image-2.1 7B (Qwen Research License,
+non-commercial). You know by reading the <b>license card on the weight's page</b> — never by the
+name, size, or recency.</p></details>
+<details><summary>Why install ComfyUI from NVIDIA's playbook rather than a generic guide?</summary>
+<p>The Spark is ARM64 + Blackwell (<code>sm_121</code>, CUDA 13); generic guides assume x86 + older
+CUDA and break. The playbook pins the correct PyTorch (cu130), ComfyUI version, and model paths for
+this exact hardware.</p></details>
+<details><summary>What is a ComfyUI "template," and why start from one?</summary>
+<p>A ready-made node graph that ships with a model. Starting from a template means the wiring is
+already correct — you run it, then change one node at a time, which is how every later pipeline
+stage is built.</p></details>
+
+<div class="ask">👩‍🏫 <b>Use me when you hit a wall.</b> Install erroring on the Spark's ARM64/CUDA
+quirks? Template reporting a missing weight? Unsure whether a model's license clears for your ad?
+Paste the error or the license text in chat. Next lesson, once you have one still:
+<b>the character / product sheet — turning one image into a repeatable, consistent "cast."</b></div>
+
+<nav class="lesson-nav bottom"><a href="0001-shape-of-the-pipeline.html">← 0001 · Shape of the Pipeline</a><a class="next" href="0003-cast-your-hero.html">0003 · Cast Your Hero →</a></nav>
+<footer>
+Lesson 0002 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When ComfyUI is up and you've saved one commercial-safe still, send it (or just say "done") — that unlocks Lesson 0003.
+</footer>
+</body></html>

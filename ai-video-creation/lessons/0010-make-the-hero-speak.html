@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0010 — Make the Hero Speak (Lip-Sync, Milestone 2)</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+<nav class="lesson-nav top"><a href="0009-grade-and-ship.html">← 0009 · Grade & Ship</a><a class="next" href="../index.html">All lessons ▸</a></nav>
+
+<div class="kicker">Lesson 0010 · Milestone 2</div>
+<h1>Make the Hero Speak</h1>
+<p class="subtitle">A talking-to-camera hero — the one thing the base pipeline can't do. Here's the lip-sync path, and every model on it fits your Spark.</p>
+
+<div class="callout warn"><b>Gate: ship milestone 1 first.</b> This is a milestone-2 lesson. Finish a
+full narration-style spot (Lessons 0001–0009) before you take on lip-sync — it's a real step up in
+moving parts, and most ads never need it.</div>
+
+<p>In Lesson 0006 you learned Wan 2.2 I2V animates <i>motion</i>, not mouths — which is why your
+first spot used voiceover. Now you want a hero who <b>speaks on camera</b>. That's a different model
+family. ~12 min. Your win: <b>one locked keyframe + an audio clip → a lip-synced talking shot.</b></p>
+
+<h2>1. Two families — pick by what you have</h2>
+<table>
+<tr><th>You have…</th><th>You want…</th><th>Family</th></tr>
+<tr><td>A still/keyframe + an audio clip</td><td>A NEW clip of them talking</td><td><b>Audio→video (generation)</b> — Wan 2.2 S2V</td></tr>
+<tr><td>An existing clip + new audio</td><td>Re-sync the MOUTH on footage you already made</td><td><b>Lip-sync (mouth re-sync)</b> — LatentSync / MuseTalk</td></tr>
+</table>
+<div class="callout"><b>Which fits this course?</b> You already generate your hero, so the natural
+path is <b>Wan 2.2 S2V</b> — feed your locked keyframe + the VO, get a talking clip. Reach for the
+re-sync family only when you have a finished clip whose mouth you need to fix to new audio.</div>
+
+<h2>2. Every option fits your Spark — here's the table</h2>
+<table>
+<tr><th>Model</th><th>Job</th><th>Spark fit</th><th>Speed</th><th>License</th></tr>
+<tr><td><b>Wan 2.2 S2V (14B)</b></td><td>Audio→talking video</td><td>✅ Easy</td><td>Batch (Wan 14B class)</td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>OmniAvatar 1.3B</b></td><td>Audio→talking video</td><td>✅ Trivial</td><td><b>Fast — iterate here</b></td><td>Wan-lineage ✅ verify</td></tr>
+<tr><td><b>InfiniteTalk / MultiTalk</b></td><td>Long talking-head</td><td>✅ Easy</td><td>Batch</td><td>Wan-lineage ✅ verify</td></tr>
+<tr><td><b>LatentSync 1.5</b></td><td>Re-sync mouth of a clip</td><td>✅ Trivial (~7.8GB)</td><td><b>Fast</b></td><td>Apache-2.0 ✅</td></tr>
+<tr><td><b>MuseTalk</b></td><td>Re-sync mouth (real-time)</td><td>✅ Trivial</td><td><b>Fast</b></td><td>MIT ✅</td></tr>
+<tr><td>Wav2Lip</td><td>Re-sync mouth (classic)</td><td>✅ Trivial</td><td>Fast</td><td>⚠️ verify before shipping</td></tr>
+</table>
+<p>Nothing here fails the <b>fit</b> gate — your 128&nbsp;GB covers all of it (the 14B models that
+choke a 32GB gaming card load fine). The split is speed: generation models batch; re-sync models and
+OmniAvatar 1.3B are fast. Full detail in the <a href="../reference/spark-fit.html">Spark-fit reference</a>.
+<a href="https://comfyui-wiki.com/en/tutorial/advanced/video/wan2.2/wan2-2-s2v">Wan 2.2 S2V in ComfyUI</a></p>
+
+<div class="callout bad"><b>Licensing — the usual two-gate rule.</b> Wan S2V (Apache), LatentSync
+(Apache), MuseTalk (MIT) all clear for commercial brand work. <b>Wav2Lip</b> and some avatar variants
+are research/uncertain — check the weight's card before you ship, exactly like the Qwen-Image-2.1
+trap in Lesson 0002. Hardware fit is not permission to ship.</div>
+
+<h2>3. The recommended path — Wan 2.2 S2V</h2>
+<div class="step"><div class="n">1</div><div>Draft your VO line first (clean audio — generated TTS or recorded).</div></div>
+<div class="step"><div class="n">2</div><div>Take your locked keyframe of the hero (from Lesson 0005). Load the Wan2.2 S2V ComfyUI workflow; set keyframe as the reference image and the audio as the driver.</div></div>
+<div class="step"><div class="n">3</div><div>Prototype on <b>OmniAvatar 1.3B</b> (fast) to check framing/expression, then run the final on <b>Wan 2.2 S2V 14B</b> as an overnight batch — same rhythm as Lesson 0006.</div></div>
+<div class="step"><div class="n">4</div><div>Bring the talking clip back into Resolve (Lesson 0008). It cuts and grades like any other shot.</div></div>
+<div class="callout ok"><b>Done =</b> one shot where your hero speaks a line and the mouth matches,
+generated on a Spark-fit, commercially-licensed model, dropped onto your timeline.</div>
+
+<h2>4. When to NOT use it</h2>
+<p>Lip-sync adds cost, render time, and a new failure mode (uncanny mouths). If a line works as
+voiceover over a reactive shot — and most do — keep it VO. Use a talking hero only when the hero
+<i>speaking to the viewer</i> is the point (a founder, a spokesperson, a testimonial).</p>
+
+<h2>5. Retrieval check (eyes closed first)</h2>
+<details><summary>You have a locked keyframe + a VO clip and want a new talking shot. Which family?</summary>
+<p>Audio→video generation — <b>Wan 2.2 S2V</b>. Mouth re-sync (LatentSync/MuseTalk) is for fixing an
+<i>existing</i> clip's mouth, not generating a new one.</p></details>
+<details><summary>Do any of these lip-sync models fail to fit the Spark?</summary>
+<p>No — all fit in 128&nbsp;GB, including the 14B models that gaming cards can't load. The real
+difference is speed (batch vs fast), not fit.</p></details>
+<details><summary>Which lip-sync models are commercial-safe, and which needs a license check?</summary>
+<p>Wan S2V (Apache), LatentSync (Apache), MuseTalk (MIT) are safe. <b>Wav2Lip</b> (and some avatar
+variants) need verifying before shipping.</p></details>
+
+<div class="ask">👩‍🏫 <b>Ask me.</b> Setting up the S2V workflow? Mouths looking uncanny? Deciding
+VO-vs-talking-head for a specific line? Paste the shot and we'll work it. This is milestone-2
+territory — take your time, and lean on me.</div>
+
+<nav class="lesson-nav bottom"><a href="0009-grade-and-ship.html">← 0009 · Grade & Ship</a><a href="../index.html">↑ Back to all lessons</a></nav>
+<footer>
+Lesson 0010 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/spark-fit.html">Spark-fit</a> · <a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+Milestone-2 lesson — ship milestone 1 (0009) first.
+</footer>
+</body></html>
