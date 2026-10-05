@@ -1,0 +1,93 @@
+/* course.css — shared styling for all lessons & reference docs.
+   Tufte-inspired: generous margins, readable serif body, restrained palette.
+   Prints cleanly to paper. Link from every lesson: <link rel="stylesheet" href="../assets/course.css"> */
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #fffff8;      /* Tufte off-white */
+  --muted: #6b6b6b;
+  --rule: #d8d8cf;
+  --accent: #8b2e2e;     /* deep brand red — used sparingly */
+  --accent-soft: #f3e9e9;
+  --ok: #2d6a4f;
+  --warn: #9a6700;
+  --bad: #b42318;
+  --code-bg: #f4f3ec;
+  --maxw: 760px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e6df; --paper: #16161a; --muted: #9a988f;
+    --rule: #33332e; --accent: #e07a7a; --accent-soft: #2a1f1f; --code-bg: #22221d;
+  }
+}
+
+html { font-size: 17px; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: Charter, "Iowan Old Style", Georgia, Cambria, "Times New Roman", serif;
+  line-height: 1.55; max-width: var(--maxw);
+  margin: 0 auto; padding: 4rem 2rem 6rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+h1 { font-size: 2.4rem; margin: 0 0 0.3rem; }
+h2 { font-size: 1.5rem; margin: 2.6rem 0 0.6rem; }
+h3 { font-size: 1.15rem; margin: 1.8rem 0 0.4rem; }
+
+.kicker { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem;
+  color: var(--accent); font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 700; }
+.subtitle { color: var(--muted); font-style: italic; font-size: 1.1rem; margin: 0 0 2rem; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-color: var(--accent); }
+
+p, li { font-size: 1.02rem; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: 0.3rem 0; }
+
+code, kbd { font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.86em; background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px; }
+pre { background: var(--code-bg); padding: 1rem 1.2rem; border-radius: 8px; overflow-x: auto;
+  border: 1px solid var(--rule); line-height: 1.45; }
+pre code { background: none; padding: 0; font-size: 0.82rem; }
+
+blockquote { margin: 1.4rem 0; padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 3px solid var(--accent); color: var(--muted); font-style: italic; }
+
+.callout { background: var(--accent-soft); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 1rem 1.2rem; margin: 1.4rem 0; font-size: 0.96rem; }
+.callout.ok   { border-left: 4px solid var(--ok); }
+.callout.warn { border-left: 4px solid var(--warn); }
+.callout.bad  { border-left: 4px solid var(--bad); }
+.callout b { font-family: ui-sans-serif, system-ui, sans-serif; }
+
+table { border-collapse: collapse; width: 100%; margin: 1.4rem 0; font-size: 0.92rem; }
+th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+
+.step { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; margin: 1rem 0; }
+.step .n { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 700;
+  color: var(--accent); font-size: 1.3rem; line-height: 1.2; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+.pipeline { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin: 1.2rem 0; font-size: 0.8rem;
+  font-family: ui-sans-serif, system-ui, sans-serif; }
+.pipeline .stage { background: var(--code-bg); border: 1px solid var(--rule);
+  border-radius: 6px; padding: 0.35rem 0.6rem; }
+.pipeline .arrow { color: var(--accent); font-weight: 700; }
+
+footer { margin-top: 4rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: 0.85rem; font-family: ui-sans-serif, system-ui, sans-serif; }
+.ask { background: var(--accent-soft); border-radius: 8px; padding: 0.8rem 1.1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; margin-top: 1.5rem; }
+
+@media print {
+  body { padding: 0; max-width: 100%; font-size: 11pt; }
+  a { color: var(--ink); border: none; }
+  .ask, footer { page-break-inside: avoid; }
+}

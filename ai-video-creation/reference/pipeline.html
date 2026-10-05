@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — The AI Brand-Ad Pipeline</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+
+<div class="kicker">Reference · Pipeline Map</div>
+<h1>The AI Brand-Ad Pipeline</h1>
+<p class="subtitle">The whole workflow on one page. Open-source, DGX-Spark-local, commercial-safe.</p>
+
+<p>Nine stages. The golden rule running through all of them: <b>resolve consistency on
+cheap still images first; only animate frames you've already locked.</b> Video generation
+is the slowest, least controllable step — never discover a problem there.</p>
+
+<div class="pipeline">
+<span class="stage">1 Brief</span><span class="arrow">→</span>
+<span class="stage">2 Script</span><span class="arrow">→</span>
+<span class="stage">3 Character / Product Sheet</span><span class="arrow">→</span>
+<span class="stage">4 Shot list</span><span class="arrow">→</span>
+<span class="stage">5 Keyframe stills</span><span class="arrow">→</span>
+<span class="stage">6 Image→Video</span><span class="arrow">→</span>
+<span class="stage">7 Upscale / interpolate</span><span class="arrow">→</span>
+<span class="stage">8 Edit + sound (Resolve)</span><span class="arrow">→</span>
+<span class="stage">9 Grade + deliver</span>
+</div>
+
+<h2>Stage by stage</h2>
+<table>
+<tr><th>#</th><th>Stage</th><th>Tool</th><th>Output artifact</th><th>Why it exists</th></tr>
+<tr><td>1</td><td><b>Brief</b></td><td>Claude + you</td><td>1-pager: brand, audience, one message, tone, CTA, aspect ratio, duration</td><td>Everything downstream is judged against this. No brief = pretty footage that sells nothing.</td></tr>
+<tr><td>2</td><td><b>Script / concept</b></td><td>Claude</td><td>Voiceover or beat sheet + ad structure (hook→problem→product→payoff)</td><td>Structure is what makes 20s feel like an ad, not a montage.</td></tr>
+<tr><td>3</td><td><b>Character / product sheet</b></td><td>Qwen-Image / FLUX schnell / SDXL + ComfyUI</td><td>Turnaround grid (front/¾/side/back), expressions, consistent lighting; a <b>character LoRA</b> if the hero recurs</td><td>The single biggest lever on consistency. This is your "casting."</td></tr>
+<tr><td>4</td><td><b>Shot list</b></td><td>Claude + you</td><td>Table: shot #, size (WS/MS/CU), camera move, duration, description, the still-image prompt</td><td>Converts the script into a checklist of images to generate. Removes improvisation.</td></tr>
+<tr><td>5</td><td><b>Keyframe stills</b></td><td>Image model + ControlNet/IPAdapter + character LoRA</td><td>One (or 2) locked still per shot — the exact composition, matching the sheet</td><td>Cheap, fast, fully controllable. You iterate here, not in video.</td></tr>
+<tr><td>6</td><td><b>Image → Video</b></td><td><b>Wan 2.2</b> / HunyuanVideo 1.5 / LTX-Video in ComfyUI</td><td>3–10s clip per keyframe, with a motion prompt</td><td>Animates the locked frame. On Spark: batch these overnight.</td></tr>
+<tr><td>7</td><td><b>Upscale / interpolate</b></td><td>ComfyUI (upscalers, RIFE/FILM frame interp)</td><td>1080p, smooth 24–30fps clips</td><td>Generation is often sub-1080p / low-fps to save time; fix in post-gen.</td></tr>
+<tr><td>8</td><td><b>Edit + sound</b></td><td>DaVinci Resolve (free)</td><td>Timeline: cuts, pacing to the beat sheet, VO, music, SFX</td><td>The edit is half the "cinematic" feeling. Pacing sells energy.</td></tr>
+<tr><td>9</td><td><b>Grade + deliver</b></td><td>Resolve (Color + Deliver pages)</td><td>Consistent color across clips (they won't match raw), export per platform</td><td>A unifying grade hides that shots came from different generations.</td></tr>
+</table>
+
+<div class="callout bad"><b>Licensing tripwire.</b> A brand ad is commercial. <b>FLUX.1 [dev] is
+non-commercial</b> — do not ship it. Commercial-safe image: Qwen-Image, FLUX.1 [schnell], SDXL.
+Commercial-safe video: Wan 2.2, HunyuanVideo 1.5, LTX-Video (all Apache-2.0). Re-check the
+weight's license card before every delivery. <a href="https://d-central.tech/local-image-generation-models/">source</a></div>
+
+<div class="callout warn"><b>DGX Spark reality.</b> 128 GB unified memory means the big models
+<i>fit</i>; ~273 GB/s bandwidth means they run <i>slowly</i>. Design the workflow for batch:
+lock stills interactively by day, queue video renders overnight. Don't expect real-time scrubbing.
+<a href="https://intuitionlabs.ai/articles/nvidia-dgx-spark-review">source</a></div>
+
+<h2>The three pillars of consistency</h2>
+<p>"Cinematic" and "on-brand" both reduce to <i>consistency</i>. Three mechanisms, used together:</p>
+<table>
+<tr><th>Mechanism</th><th>Holds what constant</th><th>Where</th></tr>
+<tr><td><b>Character LoRA</b> (fine-tune)</td><td>A specific face/body/product across any prompt</td><td>Stage 3→5</td></tr>
+<tr><td><b>IPAdapter / reference image</b></td><td>Identity & style, no training needed</td><td>Stage 5</td></tr>
+<tr><td><b>ControlNet</b> (pose/depth/edge)</td><td>Composition & camera, shot to shot</td><td>Stage 5</td></tr>
+<tr><td><b>Unifying color grade</b></td><td>Palette & mood across mismatched clips</td><td>Stage 9</td></tr>
+</table>
+
+<footer>
+Reference doc · part of the <a href="../MISSION.md">AI Brand-Ad</a> course ·
+see the <a href="glossary.html">glossary</a> and the <a href="../lessons/">lessons</a>.<br>
+Questions? Ask your teacher (me) in chat — that's what I'm here for.
+</footer>
+</body></html>
