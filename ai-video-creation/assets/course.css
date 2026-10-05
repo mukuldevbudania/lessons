@@ -13,7 +13,7 @@
   --warn: #9a6700;
   --bad: #b42318;
   --code-bg: #f4f3ec;
-  --maxw: 760px;
+  --maxw: 1040px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,7 +45,10 @@ a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--
 a:hover { border-color: var(--accent); }
 
 p, li { font-size: 1.02rem; }
-ul, ol { padding-left: 1.3rem; }
+/* Keep prose at a readable measure even though the page is wide —
+   tables, diagrams, and the pipeline strip still use the full width. */
+body > p, .subtitle, h2, h3, blockquote, details { max-width: 72ch; }
+ul, ol { padding-left: 1.3rem; max-width: 72ch; }
 li { margin: 0.3rem 0; }
 
 code, kbd { font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
