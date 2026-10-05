@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0001 — The Shape of the Pipeline</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+
+<div class="kicker">Lesson 0001 · Foundations</div>
+<h1>The Shape of the Pipeline</h1>
+<p class="subtitle">Before any model: understand the one rule that separates a brand ad from a pile of pretty clips.</p>
+
+<p>You came in asking "what's the whole process — character sheets, storyline, image-to-video?"
+Here it is, and here's the single idea that makes it work. This lesson is ~8 minutes.
+Your win: you'll leave with a one-page <b>brief</b> for a real spot — the thing every later
+stage is judged against.</p>
+
+<h2>1. The whole map, in one breath</h2>
+<p>Nine stages, left to right. Full detail lives in the
+<a href="../reference/pipeline.html">pipeline reference</a> — glance at it, don't memorize it.</p>
+
+<div class="pipeline">
+<span class="stage">Brief</span><span class="arrow">→</span>
+<span class="stage">Script</span><span class="arrow">→</span>
+<span class="stage">Character sheet</span><span class="arrow">→</span>
+<span class="stage">Shot list</span><span class="arrow">→</span>
+<span class="stage">Keyframe stills</span><span class="arrow">→</span>
+<span class="stage">Image→Video</span><span class="arrow">→</span>
+<span class="stage">Upscale</span><span class="arrow">→</span>
+<span class="stage">Edit+Sound</span><span class="arrow">→</span>
+<span class="stage">Grade+Deliver</span>
+</div>
+
+<h2>2. The one rule</h2>
+<blockquote>Resolve consistency on cheap still images first. Only animate frames you've already locked.</blockquote>
+<p>Newcomers reach for the exciting part — type a prompt, get a video. Then every clip has a
+different face, different lighting, a product that morphs. They try to fix it in video, which is
+the <i>slowest and least controllable</i> step. On your DGX Spark a single clip can take minutes
+to render — you cannot afford to discover a problem there.</p>
+<p>So we invert it. We decide identity and composition on <b>stills</b> (seconds to iterate,
+fully controllable), lock them as <b>keyframes</b>, and only then hand each locked frame to the
+video model to animate. Image-to-video, not text-to-video. The character sheet exists for exactly
+this reason: it's your "casting" — the source of truth every keyframe must match.</p>
+
+<div class="callout"><b>Why this is the whole game:</b> "cinematic" and "on-brand" both reduce to
+<b>consistency</b> — same character, same light, same palette, shot after shot. Three tools buy it:
+a <b>character LoRA</b>, an <b>IPAdapter</b> reference, and <b>ControlNet</b> for composition — plus
+a unifying <b>color grade</b> at the end. (All defined in the <a href="../reference/glossary.html">glossary</a>.)
+You'll meet each in later lessons.</p>
+
+<h2>3. Your two hard constraints (know them cold)</h2>
+<div class="callout warn"><b>Hardware.</b> DGX Spark fits big models (128GB) but is bandwidth-bound
+(~273 GB/s). Translation: <i>iterate on stills by day, batch video renders overnight.</i> This isn't
+a limitation to fight — it's the rhythm the workflow is built around.
+<a href="https://intuitionlabs.ai/articles/nvidia-dgx-spark-review">why</a></div>
+<div class="callout bad"><b>Licensing.</b> A brand ad is commercial. <b>FLUX.1 [dev] is non-commercial — never ship it.</b>
+Use Qwen-Image, FLUX.1 [schnell], or SDXL for images; Wan 2.2 / HunyuanVideo 1.5 / LTX-Video for video.
+<a href="https://d-central.tech/local-image-generation-models/">the commercial-safe list</a></div>
+
+<h2>4. Retrieval check (close your eyes first)</h2>
+<p>Answer out loud, then expand. No peeking — effortful recall is what makes this stick.</p>
+<details><summary>Where in the pipeline do you resolve a character's identity — and why not later?</summary>
+<p>At the <b>character sheet</b> and <b>keyframe (still)</b> stages. Not in video, because video is the
+slowest and least controllable step; a consistency bug found there is enormously expensive to fix.</p></details>
+<details><summary>Which single model named here must you never use for a brand ad, and why?</summary>
+<p><b>FLUX.1 [dev]</b> — its license is non-commercial.</p></details>
+<details><summary>What does your Spark's low memory bandwidth change about how you work?</summary>
+<p>You iterate interactively on <b>stills</b> and <b>batch the video renders</b> (e.g. overnight) rather
+than expecting real-time video generation.</p></details>
+
+<h2>5. Your win — write the brief ✍️</h2>
+<p>This is the real artifact. Fill these seven lines (Claude is great for drafting them — paste this list in).
+Keep it to one page. Bring it back to me and we'll pressure-test it together.</p>
+<ol>
+<li><b>Brand</b> — real or fictional (a fictional one is totally fine for milestone 1).</li>
+<li><b>Audience</b> — who, in one phrase.</li>
+<li><b>One message</b> — the single thing a viewer should remember. Just one.</li>
+<li><b>Tone</b> — three adjectives (e.g. "warm, confident, understated").</li>
+<li><b>Hero</b> — a recurring character, or the product itself, as the thing we keep consistent.</li>
+<li><b>Format</b> — aspect ratio (9:16 / 16:9 / 1:1) + duration (15 / 20 / 30s).</li>
+<li><b>CTA</b> — what the last 2 seconds ask the viewer to do.</li>
+</ol>
+
+<div class="callout ok"><b>Primary source for this lesson</b> (watch one, ~15 min): search YouTube for a
+recent <i>"Wan 2.2 ComfyUI image to video workflow"</i> walkthrough — seeing the still→video handoff
+once makes the "lock then animate" rule click. We'll pick the exact workflow together in Lesson 0002.</div>
+
+<div class="ask">👩‍🏫 <b>I'm your teacher — use me.</b> Stuck on the brief, unsure what "one message" means for
+your brand, or want me to draft a first version to react to? Just ask in chat. Next lesson:
+<b>get ComfyUI running on the Spark and generate your first commercial-safe still.</b></div>
+
+<footer>
+Lesson 0001 · <a href="../MISSION.md">mission</a> ·
+<a href="../reference/pipeline.html">pipeline</a> · <a href="../reference/glossary.html">glossary</a><br>
+When your brief is drafted, send it to me — that unlocks Lesson 0002.
+</footer>
+</body></html>

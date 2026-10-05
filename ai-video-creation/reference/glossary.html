@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — Glossary</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head><body>
+
+<div class="kicker">Reference · Glossary</div>
+<h1>Glossary</h1>
+<p class="subtitle">Shared nomenclature. Every lesson uses these terms exactly as defined here.</p>
+
+<h2>Models & runners</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><b>ComfyUI</b></td><td>Node-graph app that runs open image/video models. The orchestration hub of the whole pipeline.</td></tr>
+<tr><td><b>Wan 2.2</b></td><td>Alibaba open video model (Apache-2.0). MoE architecture, T2V + I2V, up to ~10s. The default cinematic workhorse.</td></tr>
+<tr><td><b>HunyuanVideo 1.5</b></td><td>Tencent open video model (Apache-2.0). 8.3B rebuild runs on consumer VRAM. Strong motion.</td></tr>
+<tr><td><b>LTX-Video</b></td><td>Lightricks open video model (Apache-2.0). Fastest of the three; lower ceiling. Good for drafts.</td></tr>
+<tr><td><b>Qwen-Image</b></td><td>Alibaba open image model, 20B, Apache-2.0. Commercial-safe; excellent text-in-image. A top brand-ad pick.</td></tr>
+<tr><td><b>FLUX.1 [schnell]</b></td><td>Fast FLUX variant, Apache-2.0 → <b>commercial-OK</b>. (Contrast with [dev].)</td></tr>
+<tr><td><b>FLUX.1 [dev]</b></td><td>Highest-quality FLUX, but <b>non-commercial license</b>. ❌ Not for brand work.</td></tr>
+<tr><td><b>SDXL</b></td><td>Stable Diffusion XL. Deepest LoRA/ControlNet ecosystem. Commercial-OK under Stability Community License (with conditions).</td></tr>
+</table>
+
+<h2>Consistency & control</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><b>LoRA</b></td><td>Low-Rank Adaptation — a small fine-tune that teaches a base model one specific character, product, or style. Your "casting" of a recurring hero.</td></tr>
+<tr><td><b>ControlNet</b></td><td>Conditions a generation on structure — a pose skeleton, depth map, or edge map — so composition/camera is controlled, not random.</td></tr>
+<tr><td><b>IPAdapter</b></td><td>"Image Prompt" adapter — feeds a reference image for identity/style transfer <i>without</i> training a LoRA. Fast consistency.</td></tr>
+<tr><td><b>Character sheet / turnaround</b></td><td>A reference grid of one character from multiple angles + expressions, under consistent lighting. The source of truth for identity.</td></tr>
+<tr><td><b>Keyframe</b></td><td>A locked still for a specific shot — the exact frame you'll animate. Composition is resolved here, cheaply.</td></tr>
+<tr><td><b>Seed</b></td><td>The random number that determines a generation. Fix it to reproduce / vary deliberately.</td></tr>
+</table>
+
+<h2>Film craft (the non-AI half)</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><b>Shot sizes</b></td><td>WS wide, MS medium, CU close-up, ECU extreme close-up. Vary them for rhythm.</td></tr>
+<tr><td><b>Beat sheet</b></td><td>The ad's structure as timed beats: hook → problem → product → payoff → CTA.</td></tr>
+<tr><td><b>180° rule</b></td><td>Keep the camera on one side of the action line so screen direction stays consistent between cuts.</td></tr>
+<tr><td><b>Color grade</b></td><td>Deliberate, consistent color/mood applied in post. The thing that makes mismatched AI clips feel like one film.</td></tr>
+<tr><td><b>I2V / T2V</b></td><td>Image-to-Video / Text-to-Video. This pipeline is I2V-first (lock the frame, then move it).</td></tr>
+</table>
+
+<footer>
+Glossary · part of the AI Brand-Ad course · back to the <a href="pipeline.html">pipeline map</a>.<br>
+A term missing or unclear? Ask me and I'll add it here.
+</footer>
+</body></html>
