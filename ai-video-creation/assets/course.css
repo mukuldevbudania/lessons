@@ -13,7 +13,7 @@
   --warn: #9a6700;
   --bad: #b42318;
   --code-bg: #f4f3ec;
-  --maxw: 1152px;
+  --maxw: 1280px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,10 +44,8 @@ h3 { font-size: 1.15rem; margin: 1.8rem 0 0.4rem; }
 a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
 a:hover { border-color: var(--accent); }
 
-p, li { font-size: 1.02rem; }
-/* Only plain paragraphs + the subtitle stay at a readable measure.
-   Headings, callouts, quotes, details, tables, lists fill the full page width. */
-body > p, .subtitle { max-width: 78ch; }
+p, li { font-size: 1.05rem; }
+/* Body fills the full page width — no prose cap. */
 ul, ol { padding-left: 1.3rem; }
 li { margin: 0.3rem 0; }
 
