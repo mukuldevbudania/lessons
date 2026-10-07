@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0009 · Branches</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0008-gitignore.html">← 0008 · .gitignore</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0009 · Safe Experiments <span class="level">Advanced</span></p>
+  <h1>Branches</h1>
+  <p class="lede">A branch is a safe parallel copy where you can try bold changes without touching the version that works.</p>
+
+  <p>Until now you've worked on one line called <strong>main</strong>. Branches let you experiment fearlessly. About <strong>10 minutes</strong>. Your win: you can spin off a branch, try something, and either keep it or throw it away — with <code>main</code> untouched the whole time.</p>
+
+  <h2>1. The idea</h2>
+  <p>Your <code>main</code> branch is the "real," working version of the repo. A <strong>branch</strong> is a copy that splits off from main so you can make changes in isolation. If the experiment works, you fold it back into main. If it flops, you delete the branch and main never knew.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Like <strong>duplicating a sequence</strong> before a risky re-edit. You hack on the copy; the original timeline stays safe. If the new cut is better, it becomes the master; if not, you delete the duplicate.
+  </div>
+
+  <h2>2. Create and switch to a branch</h2>
+  <ol class="steps">
+    <li>In GitHub Desktop, click the <strong>Current branch</strong> dropdown at the top (it says <code>main</code>).</li>
+    <li>Click <strong>New branch</strong>. Name it <code>experiment-ad-generator</code>. Click <strong>Create branch</strong>.</li>
+    <li>You're now <em>on</em> that branch — the dropdown shows its name. Every commit you make now lands here, not on main.</li>
+  </ol>
+
+  <h2>3. Experiment freely</h2>
+  <ol class="steps">
+    <li>Add or heavily rewrite a prompt file — try a wild new ad-generator idea.</li>
+    <li>Commit it as usual: <code>Try new ad-generator approach</code>.</li>
+    <li>Flip the Current branch dropdown back to <code>main</code> and look at the folder — your experimental change <strong>isn't there</strong>. It's safely on the other branch. Switch back to continue.</li>
+  </ol>
+
+  <h2>4. Keep it, or bin it</h2>
+  <p><strong>If the experiment is good</strong> — merge it into main:</p>
+  <ol class="steps">
+    <li>Switch to <code>main</code> (Current branch dropdown).</li>
+    <li><strong>Branch → Merge into current branch</strong>, pick <code>experiment-ad-generator</code>. Your work is now part of main. Push.</li>
+  </ol>
+  <p><strong>If it flopped</strong> — just delete the branch (<strong>Branch → Delete</strong>) while on main. Gone, no harm done.</p>
+
+  <div class="callout warn">
+    <span class="tag">Scope note</span>
+    On teams, branches usually go through "Pull Requests" for review. We're deliberately skipping PRs — for solo creative work, create → experiment → merge or delete is all you need. You can learn PRs later if you ever collaborate.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop">Managing branches in GitHub Desktop</a>.
+  </div>
+
+  <h2>5. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What is a branch, in one line?</summary>
+      <p>A parallel copy of the repo where you can change things without affecting the main version.</p>
+    </details>
+    <details>
+      <summary>If an experiment on a branch fails, what happens to main?</summary>
+      <p>Nothing — main is untouched; you simply delete the branch and move on.</p>
+    </details>
+    <details>
+      <summary>How do you keep a good experiment?</summary>
+      <p>Switch to main and merge the branch into it, then push.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>Now you can take risks without fear — the mark of real fluency.</strong> Next lesson we finally open the terminal. Don't worry: it's the same clone/commit/push you already know, just typed instead of clicked. The ideas are done; only the surface changes.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0008-gitignore.html">← 0008 · .gitignore</a>
+    <span class="spacer"></span>
+    <a href="0010-meet-the-terminal.html">0010 · Meet the Terminal →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

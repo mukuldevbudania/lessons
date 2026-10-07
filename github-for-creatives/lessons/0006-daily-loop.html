@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0006 · The Daily Loop</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0005-clone-a-repo.html">← 0005 · Clone a Skills Repo</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0006 · Rhythm <span class="level">Intermediate</span></p>
+  <h1>The Daily Loop</h1>
+  <p class="lede">Edit → commit → push, over and over. This small rhythm is 90% of using GitHub for the rest of your life.</p>
+
+  <p>Back to your own <code>my-prompts</code> repo. Today you make the loop automatic. About <strong>10 minutes</strong>. Your win: you can confidently change a file and get it safely to the cloud without thinking twice — and know what pull is for.</p>
+
+  <h2>1. Make a change</h2>
+  <ol class="steps">
+    <li>Open <code>my-prompts</code> in GitHub Desktop, click <strong>Show in Explorer</strong>.</li>
+    <li>Edit your <code>veo-cinematic-ad.txt</code> — tweak the prompt, add a line. Save.</li>
+    <li>Add a brand-new file too, say <code>product-closeup.txt</code>, with another prompt. Save.</li>
+  </ol>
+
+  <h2>2. Review what changed — the superpower</h2>
+  <p>Back in GitHub Desktop, the <strong>Changes</strong> panel lists both files. Click each one: on the right, GitHub Desktop shows you <strong>exactly what changed</strong> — new lines in <span style="color:var(--accent)">green</span>, removed lines in red. Nothing is a mystery.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    This is a before/after diff — like comparing two versions of an edit side by side to see precisely what moved. You never have to guess what a change did.
+  </div>
+
+  <h2>3. Commit, then push</h2>
+  <ol class="steps">
+    <li>Write a clear <strong>Summary</strong>: <code>Tweak cinematic prompt, add product closeup</code>.</li>
+    <li>Click <strong>Commit to main</strong>.</li>
+    <li>Click <strong>Push origin</strong> at the top. Your changes are now on GitHub.com.</li>
+  </ol>
+
+  <div class="clickpath">
+    The loop, every time: edit → <b>review the diff</b> → <b>Commit to main</b> → <b>Push origin</b>.
+  </div>
+
+  <h2>4. When do you pull?</h2>
+  <p><strong>Pull</strong> brings down changes that exist on GitHub.com but not on your PC yet. You'll need it when:</p>
+  <ul class="plain">
+    <li>You edited a file directly on the github.com website.</li>
+    <li>You work on a second computer and pushed from there.</li>
+    <li>(Later) a skills repo you cloned got updated and you want the new version — covered in Lesson 0012.</li>
+  </ul>
+  <p>The button is <strong>Pull origin</strong>. If there's nothing to pull, it simply says you're up to date.</p>
+
+  <div class="callout warn">
+    <span class="tag">Good habit</span>
+    When in doubt, <strong>pull before you start editing</strong>. It makes sure your local copy matches the cloud before you add to it — avoids confusion down the line.
+  </div>
+
+  <h2>5. Writing good commit messages</h2>
+  <p>A commit message is a note to your future self. Make it say <em>what changed</em>, briefly:</p>
+  <table>
+    <tr><th>Weak</th><th>Good</th></tr>
+    <tr><td>"update"</td><td>"Add product-closeup prompt"</td></tr>
+    <tr><td>"stuff"</td><td>"Fix lighting cue in cinematic ad"</td></tr>
+    <tr><td>"asdf"</td><td>"Remove unused draft prompt"</td></tr>
+  </table>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop">Committing and reviewing changes in GitHub Desktop</a>.
+  </div>
+
+  <h2>6. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What are the three steps of the everyday loop?</summary>
+      <p>Edit the files, commit a labeled version, then push it up to GitHub.com.</p>
+    </details>
+    <details>
+      <summary>Where do you see exactly what a change did?</summary>
+      <p>In the Changes panel — clicking a file shows a diff with added lines green, removed lines red.</p>
+    </details>
+    <details>
+      <summary>Name one time you'd need to pull.</summary>
+      <p>After editing on the website, pushing from another computer, or updating a cloned repo.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>This loop is the heartbeat of everything.</strong> From here it's all about doing it well. Next: organizing a repo so a library of dozens of prompts stays findable instead of becoming a junk drawer. Do a full loop on your own and tell me the diff looked how you expected.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0005-clone-a-repo.html">← 0005 · Clone a Skills Repo</a>
+    <span class="spacer"></span>
+    <a href="0007-organize-a-repo.html">0007 · Organizing a Repo →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

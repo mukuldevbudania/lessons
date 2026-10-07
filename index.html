@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Courses</title>
+<style>
+  :root{
+    --bg:#000; --surface:#0a0f0d; --rule:#1c2b25;
+    --text:#e8ece9; --muted:#8a9690; --heading:#fff;
+    --accent:#34d399; --accent-dim:#1b7a5a;
+    --maxw:1080px;
+    --font-ui:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-serif:Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text)}
+  body{font-family:var(--font-serif);line-height:1.6;padding:4rem 1.5rem 6rem}
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  .eyebrow{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.74rem;color:var(--accent);margin:0 0 .5rem}
+  h1{font-family:var(--font-ui);font-weight:800;color:var(--heading);
+    font-size:2.6rem;line-height:1.1;margin:0 0 .6rem}
+  .lede{color:var(--muted);font-size:1.15rem;max-width:60ch;margin:0 0 2.5rem}
+  .courses{list-style:none;padding:0;margin:0;display:grid;gap:1.1rem}
+  .course{display:block;text-decoration:none;color:inherit;
+    background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);
+    border-radius:10px;padding:1.4rem 1.6rem;transition:border-color .15s,transform .15s}
+  .course:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .course h2{font-family:var(--font-ui);color:var(--heading);font-size:1.4rem;margin:0 0 .3rem}
+  .course p{color:var(--muted);margin:0;font-size:1rem}
+  .course .meta{font-family:var(--font-ui);font-size:.76rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--accent);margin-top:.7rem}
+  footer{color:var(--muted);font-family:var(--font-ui);font-size:.8rem;
+    margin-top:3.5rem;border-top:1px solid var(--rule);padding-top:1.2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Learning, one win at a time</p>
+  <h1>Courses</h1>
+  <p class="lede">Short, hands-on courses — each lesson is a single page that ends with one concrete result. Pick one and start at lesson 0001.</p>
+
+  <ul class="courses">
+
+    <li><a class="course" href="github-for-creatives/index.html">
+      <h2>GitHub for Creatives</h2>
+      <p>From "never opened a terminal" to running your own version-controlled skills library. GUI-first, built for Windows, no jargon.</p>
+      <div class="meta">12 lessons · Beginner → Advanced</div>
+    </a></li>
+
+    <li><a class="course" href="ai-video-creation/index.html">
+      <h2>AI Brand-Ad Course</h2>
+      <p>Make a cinematic brand ad on a DGX Spark using only commercial-safe open models — pipeline, keyframes, motion, grade, ship.</p>
+      <div class="meta">10 lessons · Beginner → Advanced</div>
+    </a></li>
+
+  </ul>
+
+  <footer>Hosted on GitHub Pages. New courses appear here as they're added.</footer>
+
+</div>
+</body>
+</html>

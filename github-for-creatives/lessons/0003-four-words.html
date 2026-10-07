@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0003 · The Four Words</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0002-install-github-desktop.html">← 0002 · Install GitHub Desktop</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0003 · Core Model <span class="level">Beginner</span></p>
+  <h1>The Four Words</h1>
+  <p class="lede">Repository, commit, push, pull. Learn these four and GitHub stops being mysterious — every button in the app is one of them.</p>
+
+  <p>Still no typing today. Just four words and the one picture they form. About <strong>6 minutes</strong>. Your win: when the app shows you a button, you'll know what it actually does to your files.</p>
+
+  <h2>1. The picture: two copies of your project</h2>
+  <p>Here's the whole mental model. Your project lives in <strong>two places</strong>:</p>
+  <ul class="plain">
+    <li><strong>Local</strong> — the copy on your Windows PC, where you actually work.</li>
+    <li><strong>Remote</strong> — the copy on GitHub.com, in the cloud, safely backed up.</li>
+  </ul>
+  <p>The four words are just the actions that <em>create</em> versions and <em>move them between those two copies.</em></p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Local = the project on your editing workstation. Remote = the same project on the studio's shared drive. You work locally, then sync up to the shared drive so it's safe and others can see it. That sync, in both directions, is the whole game.
+  </div>
+
+  <h2>2. Commit — save a labeled version</h2>
+  <p>A <strong>commit</strong> is a snapshot of your whole project at one moment, with a short note you write describing what changed. It happens <em>locally</em>, on your PC. Nothing goes to the cloud yet.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Like exporting a named version to your undo timeline: <em>"rough cut v1,"</em> <em>"added the logo sting."</em> You can jump back to any commit, forever.
+  </div>
+
+  <h2>3. Push — send your commits up to GitHub</h2>
+  <p><strong>Push</strong> uploads the commits you've made on your PC up to the remote copy on GitHub.com. Now they're backed up and visible on the website. In GitHub Desktop this is one button: <strong>Push origin</strong>.</p>
+
+  <h2>4. Pull — bring new commits down to your PC</h2>
+  <p><strong>Pull</strong> is the reverse: it downloads commits from GitHub.com into your local copy. You pull when the cloud copy has changes yours doesn't — for example, after you edited a file on github.com directly, or (later) when you re-sync a skills repo someone updated. Button: <strong>Pull origin</strong>.</p>
+
+  <div class="callout">
+    <span class="tag">The daily rhythm</span>
+    Edit files → <strong>commit</strong> (save a labeled version) → <strong>push</strong> (send it to the cloud). That's 90% of what you'll ever do. <strong>Pull</strong> is for when the cloud is ahead of you. We practice this for real in Lesson 0006.
+  </div>
+
+  <h2>5. One table to rule them all</h2>
+  <table>
+    <tr><th>Word</th><th>What it does</th><th>Direction</th></tr>
+    <tr><td><strong>Commit</strong></td><td>Save a labeled snapshot</td><td>Stays on your PC</td></tr>
+    <tr><td><strong>Push</strong></td><td>Upload your commits</td><td>PC → GitHub.com</td></tr>
+    <tr><td><strong>Pull</strong></td><td>Download new commits</td><td>GitHub.com → PC</td></tr>
+    <tr><td><strong>Repository</strong></td><td>The project itself (both copies)</td><td>—</td></tr>
+  </table>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    GitHub's plain-language overview backs this up: <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git — GitHub Docs</a>.
+  </div>
+
+  <h2>6. Retrieval check (say it before you open it)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Does a commit go to the cloud by itself?</summary>
+      <p>No. A commit is saved locally on your PC. It only reaches the cloud when you push.</p>
+    </details>
+    <details>
+      <summary>Which word uploads, and which downloads?</summary>
+      <p>Push uploads from your PC to GitHub; pull downloads from GitHub to your PC.</p>
+    </details>
+    <details>
+      <summary>What's the everyday three-step rhythm?</summary>
+      <p>Edit your files, commit a labeled version, then push it up to GitHub.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>Now the app will make sense.</strong> Every button you'll touch is one of these four words. Next lesson you finally click: we make your first repository and save a real prompt into it — your first commit and push. Want me to re-explain any of the four in a different way? Just ask.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0002-install-github-desktop.html">← 0002 · Install GitHub Desktop</a>
+    <span class="spacer"></span>
+    <a href="0004-first-repo.html">0004 · Your First Repo →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

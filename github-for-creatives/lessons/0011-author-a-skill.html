@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0011 · Author Your Own Skill</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0010-meet-the-terminal.html">← 0010 · Meet the Terminal</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0011 · The Mission <span class="level">Advanced</span></p>
+  <h1>Author Your Own Skill</h1>
+  <p class="lede">Package your ad-making know-how as a reusable skill — a SKILL.md plus its prompts and example files — all versioned together in Git. This is what you came for.</p>
+
+  <p>Everything so far was building to this. Today you create your own skill repository and fill it with a real, reusable ad-creation skill. About <strong>15 minutes</strong>. Your win: a <code>my-skills</code> repo on GitHub containing your first authored skill.</p>
+
+  <h2>1. What a skill is</h2>
+  <p>A <strong>skill</strong> is a small, self-contained packet that teaches an AI agent how to do one thing well. At minimum it's a folder containing:</p>
+  <ul class="plain">
+    <li><strong>SKILL.md</strong> — the instructions: what it does, when to use it, step by step.</li>
+    <li><strong>prompts</strong> — the actual prompt text the skill relies on.</li>
+    <li><strong>examples / assets</strong> — reference files, sample outputs, templates.</li>
+  </ul>
+  <p>You saw this exact shape in <a href="0005-clone-a-repo.html">mattpocock/skills</a> (Lesson 0005). Now you build your own.</p>
+
+  <h2>2. Make a skills repo</h2>
+  <ol class="steps">
+    <li>In GitHub Desktop, <strong>Create a new repository</strong> named <code>my-skills</code>, with a README. Publish it (private is fine).</li>
+    <li>Inside, create a folder for your first skill: <code>create-brand-ad/</code>.</li>
+  </ol>
+
+  <h2>3. Write the SKILL.md</h2>
+  <p>Inside <code>create-brand-ad/</code>, make <code>SKILL.md</code> and write your process down the way you'd explain it to an assistant:</p>
+  <pre><code># Create Brand Ad
+
+## What this does
+Generates a 15-30s cinematic brand ad from a short brief.
+
+## When to use
+When I have a product and a mood, and need a shot list + prompts fast.
+
+## Steps
+1. Read the brief: product, mood (3 adjectives), target platform.
+2. Use `prompts/shot-list.txt` to generate a 4-6 shot plan.
+3. For each shot, fill `prompts/veo-shot.txt` with the shot detail.
+4. Keep the hero product consistent across every shot.
+5. Export per the platform spec in `reference/platforms.md`.
+
+## Files
+- `prompts/shot-list.txt` — the shot-planning prompt
+- `prompts/veo-shot.txt` — the per-shot generation prompt
+- `reference/platforms.md` — aspect ratios & export settings</code></pre>
+
+  <h2>4. Add the supporting files</h2>
+  <ol class="steps">
+    <li>Make a <code>prompts/</code> folder inside <code>create-brand-ad/</code>. Add <code>shot-list.txt</code> and <code>veo-shot.txt</code> with your real, battle-tested prompts.</li>
+    <li>Make a <code>reference/</code> folder. Add <code>platforms.md</code> with your export specs (the 9:16 / 16:9 / 1:1 table from your video work).</li>
+    <li>The structure now looks like this:</li>
+  </ol>
+  <pre><code>my-skills/
+├─ README.md
+└─ create-brand-ad/
+   ├─ SKILL.md
+   ├─ prompts/
+   │  ├─ shot-list.txt
+   │  └─ veo-shot.txt
+   └─ reference/
+      └─ platforms.md</code></pre>
+
+  <h2>5. Commit the whole skill as one unit</h2>
+  <ol class="steps">
+    <li>In GitHub Desktop, all the new files show in Changes.</li>
+    <li>Commit: <code>Add create-brand-ad skill</code>. Push.</li>
+  </ol>
+  <div class="callout">
+    <span class="tag">Why versioning a skill matters</span>
+    As you improve the skill — better prompts, new steps — each commit is a labeled version you can roll back to. Your skill <em>evolves</em> with a full history, instead of being a prompt you tweak and lose. That's the whole payoff of this course.
+  </div>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    A skill is a <strong>reusable template project</strong> — like a saved ad template with placeholders. Build it once, reuse it on every client, improve it over time, and never lose a good version.
+  </div>
+
+  <h2>6. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What are the three parts of a basic skill?</summary>
+      <p>A SKILL.md with instructions, the prompt files it uses, and example or reference assets.</p>
+    </details>
+    <details>
+      <summary>Why keep a skill in Git rather than a loose folder?</summary>
+      <p>Every improvement is a labeled version with full history you can roll back to, so good versions are never lost.</p>
+    </details>
+    <details>
+      <summary>Should the whole skill be committed together?</summary>
+      <p>Yes — SKILL.md, prompts, and references as one commit, so the skill stays a coherent unit.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You authored a real, versioned skill — the mission's north star.</strong> Build a second one (an AI-video skill) the same way and your library grows. Last lesson: keeping a skills library healthy over time — updating, re-cloning, staying tidy. Send me your SKILL.md and I'll help sharpen it.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0010-meet-the-terminal.html">← 0010 · Meet the Terminal</a>
+    <span class="spacer"></span>
+    <a href="0012-maintain-a-library.html">0012 · Maintain Your Library →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>
