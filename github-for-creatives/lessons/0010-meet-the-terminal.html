@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0010 · Meet the Terminal</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0009-branches.html">← 0009 · Branches</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0010 · Demystified <span class="level">Advanced</span></p>
+  <h1>Meet the Terminal</h1>
+  <p class="lede">The same clone, commit, and push you already know — now as typed commands. You've earned this: the ideas are familiar, only the surface is new.</p>
+
+  <p>The terminal looks scary but it's just a place to type the four words. We wait until now on purpose, so the commands name things you already understand. About <strong>12 minutes</strong>. Your win: you clone a repo and make a commit entirely from the command line, once, so it's no longer a mystery.</p>
+
+  <div class="callout warn">
+    <span class="tag">You don't have to switch</span>
+    GitHub Desktop stays perfectly valid forever. This lesson is about <em>removing fear</em>, not replacing your workflow. Many pros happily stay in the GUI. The terminal just unlocks power tools later.
+  </div>
+
+  <h2>1. Install Git for Windows</h2>
+  <p>GitHub Desktop bundled Git invisibly; to use it in a terminal, install the standalone <strong>Git for Windows</strong>, which includes a terminal called <strong>Git Bash</strong>.</p>
+  <ol class="steps">
+    <li>Go to <a href="https://git-scm.com/download/win">git-scm.com/download/win</a> and run the installer.</li>
+    <li>Click Next through the defaults — they're sensible. Finish.</li>
+    <li>Open the Start menu, type <strong>Git Bash</strong>, press Enter. A black window with a blinking cursor appears. That's the terminal.</li>
+  </ol>
+
+  <h2>2. Three navigation commands first</h2>
+  <table>
+    <tr><th>Type</th><th>Means</th></tr>
+    <tr><td><code>pwd</code></td><td>"Where am I?" — prints the current folder</td></tr>
+    <tr><td><code>ls</code></td><td>"What's here?" — lists files in this folder</td></tr>
+    <tr><td><code>cd foldername</code></td><td>"Go into" that folder (<code>cd ..</code> goes up one)</td></tr>
+  </table>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The terminal is just a text way to walk through folders — the same folders you see in Explorer, without the icons. <code>cd</code> is double-clicking a folder; <code>ls</code> is looking at what's inside.
+  </div>
+
+  <h2>3. The four words, as commands</h2>
+  <p>Navigate into a working folder first (e.g. <code>cd Documents/github</code>), then:</p>
+  <table>
+    <tr><th>Desktop button</th><th>Terminal command</th></tr>
+    <tr><td>Clone repository</td><td><code>git clone https://github.com/mattpocock/skills</code></td></tr>
+    <tr><td>(see what changed)</td><td><code>git status</code></td></tr>
+    <tr><td>Stage a file to commit</td><td><code>git add filename.txt</code></td></tr>
+    <tr><td>Commit to main</td><td><code>git commit -m "Add my prompt"</code></td></tr>
+    <tr><td>Push origin</td><td><code>git push</code></td></tr>
+    <tr><td>Pull origin</td><td><code>git pull</code></td></tr>
+  </table>
+  <p>That's it. Same four words, same meanings. <code>-m</code> just means "here comes the message," the Summary box you typed before.</p>
+
+  <h2>4. Do it once, start to finish</h2>
+  <ol class="steps">
+    <li><code>cd Documents/github</code> — go to your github folder.</li>
+    <li><code>git clone https://github.com/mattpocock/skills</code> — clone, from the command line this time.</li>
+    <li><code>cd skills</code> then <code>ls</code> — step in and look around.</li>
+    <li>In your own <code>my-prompts</code>: edit a file, then <code>git add .</code> → <code>git commit -m "Edit from terminal"</code> → <code>git push</code>.</li>
+  </ol>
+  <div class="callout">
+    <span class="tag">git add . — what the dot means</span>
+    The <code>.</code> means "all changed files in this folder." It's the quick way to stage everything at once before a commit.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    The free, authoritative book: <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">Pro Git — Git Basics</a>.
+  </div>
+
+  <h2>5. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What is the terminal command to clone a repo?</summary>
+      <p>git clone followed by the repository's URL, for example git clone https://github.com/user/repo.</p>
+    </details>
+    <details>
+      <summary>What does the -m in git commit -m "..." do?</summary>
+      <p>It supplies the commit message inline — the same text as the Summary box in Desktop.</p>
+    </details>
+    <details>
+      <summary>Do you have to abandon GitHub Desktop now?</summary>
+      <p>No. The terminal is an extra tool; Desktop remains valid for everything you do.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>The terminal is no longer a black box — it's just the four words, typed.</strong> You now have both tools. Next is the big one you've been building toward: authoring your <em>own</em> skill — prompts, files, and a SKILL.md — and versioning the whole thing in Git.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0009-branches.html">← 0009 · Branches</a>
+    <span class="spacer"></span>
+    <a href="0011-author-a-skill.html">0011 · Author Your Own Skill →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

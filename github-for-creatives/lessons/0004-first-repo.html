@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0004 · Your First Repo</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0003-four-words.html">← 0003 · The Four Words</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0004 · First Win <span class="level">Beginner</span></p>
+  <h1>Your First Repo</h1>
+  <p class="lede">Create a repository, save a real prompt into it, and watch it appear on GitHub.com. This is the moment it clicks.</p>
+
+  <p>Today you do all four words for real. About <strong>12 minutes</strong>. Your win: a repository called <code>my-prompts</code> that lives both on your PC and on GitHub.com, with your first prompt saved inside it — committed and pushed.</p>
+
+  <h2>1. Create the repository</h2>
+  <ol class="steps">
+    <li>In GitHub Desktop, click <strong>Create a new repository</strong> (or <strong>File → New repository</strong>).</li>
+    <li>Name it <code>my-prompts</code>. For <strong>Local path</strong>, pick somewhere easy like <code>Documents</code> — this is the folder on your PC where the files will live.</li>
+    <li>Tick <strong>Initialize this repository with a README</strong>. Leave the other options alone. Click <strong>Create repository</strong>.</li>
+  </ol>
+  <div class="callout">
+    <span class="tag">What just happened</span>
+    GitHub Desktop made a real folder at <code>Documents\my-prompts</code> on your PC and turned it into a repository (it's now tracking versions). It also made a first commit for you — the README. It is <strong>not on GitHub.com yet</strong> — that's the push, in step 4.
+  </div>
+
+  <h2>2. Add a prompt file</h2>
+  <ol class="steps">
+    <li>Open the repo folder: in GitHub Desktop click <strong>Show in Explorer</strong> (under <em>Repository</em> menu, or the "Open in Explorer" button).</li>
+    <li>In that folder, right-click → <strong>New → Text Document</strong>. Name it <code>veo-cinematic-ad.txt</code>. (Make sure it ends in <code>.txt</code>, not <code>.txt.txt</code>.)</li>
+    <li>Open it and paste one of your real prompts — e.g. your go-to cinematic ad prompt. Save and close the file.</li>
+  </ol>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    You just dropped an asset into the project folder. GitHub Desktop is already watching that folder, the way your editor watches a project bin — it noticed the new file instantly.
+  </div>
+
+  <h2>3. Commit it — save a labeled version</h2>
+  <ol class="steps">
+    <li>Switch back to GitHub Desktop. On the left you'll see <code>veo-cinematic-ad.txt</code> listed under <strong>Changes</strong>, with a green <strong>+</strong> — that means "new file." Click it to see the content on the right.</li>
+    <li>At the bottom-left, type a <strong>Summary</strong>: <code>Add cinematic ad prompt</code>. This is your commit message — the label.</li>
+    <li>Click the big <strong>Commit to main</strong> button.</li>
+  </ol>
+  <div class="callout">
+    <span class="tag">What just happened</span>
+    You made a commit — a labeled snapshot saved locally. The Changes list is now empty because everything is saved. Still local-only.
+  </div>
+
+  <h2>4. Push it — send it to the cloud</h2>
+  <ol class="steps">
+    <li>At the top, click <strong>Publish repository</strong> (the first push of a brand-new repo is called "publish").</li>
+    <li>A box appears. Keep the name <code>my-prompts</code>. <strong>Important:</strong> untick <strong>Keep this code private</strong> only if you want it public — for your own prompts, leave it <em>private</em> (ticked). Click <strong>Publish repository</strong>.</li>
+    <li>Wait a few seconds. Done — it's on GitHub.com.</li>
+  </ol>
+
+  <div class="clickpath">
+    The full loop you just did: <b>Create repository</b> → add a file → <b>Commit to main</b> → <b>Publish / Push</b> → it's on GitHub.com.
+  </div>
+
+  <h2>5. See it on the website</h2>
+  <p>In GitHub Desktop, click <strong>Repository → View on GitHub</strong> (or just open <a href="https://github.com">github.com</a> and find <code>my-prompts</code> under your repositories). You'll see your <code>veo-cinematic-ad.txt</code> sitting there, with your commit message. That file is now safe, versioned, and in the cloud. 🎉</p>
+
+  <div class="callout warn">
+    <span class="tag">Private vs public</span>
+    A <strong>private</strong> repo is visible only to you — right for personal prompt libraries. A <strong>public</strong> repo is visible to everyone — right for skills you want to share later. You can change this any time in the repo's settings on GitHub.com.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    GitHub's own version of this walkthrough: <a href="https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop">Creating your first repository using GitHub Desktop</a>.
+  </div>
+
+  <h2>6. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>After "Commit to main," is your file on GitHub.com yet?</summary>
+      <p>No. Commit saves it locally; it reaches GitHub.com only after you publish or push.</p>
+    </details>
+    <details>
+      <summary>What is the commit Summary for?</summary>
+      <p>It is the label describing what this snapshot changed, so your history is readable later.</p>
+    </details>
+    <details>
+      <summary>Should a personal prompt library be private or public?</summary>
+      <p>Private — visible only to you. Make a repo public only when you want to share it widely.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You just did the entire core loop — that's the Beginner milestone.</strong> You can now save and back up any creative file forever. Next tier (Intermediate) we use <em>other people's</em> work: cloning the mattpocock/skills repo onto your PC. Try adding a second prompt and committing it on your own first — then tell me how it felt.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0003-four-words.html">← 0003 · The Four Words</a>
+    <span class="spacer"></span>
+    <a href="0005-clone-a-repo.html">0005 · Clone a Skills Repo →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

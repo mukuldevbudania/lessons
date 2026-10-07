@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0007 · Organizing a Repo</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0006-daily-loop.html">← 0006 · The Daily Loop</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0007 · Structure <span class="level">Intermediate</span></p>
+  <h1>Organizing a Repo</h1>
+  <p class="lede">Folders and a README turn a pile of files into a library you (and your agent) can actually navigate.</p>
+
+  <p>A repo with 50 loose <code>.txt</code> files is a junk drawer. Today you give <code>my-prompts</code> a shape that scales. About <strong>10 minutes</strong>. Your win: a tidy folder structure and a README that explains the repo at a glance.</p>
+
+  <h2>1. Group files into folders</h2>
+  <p>Decide a few top-level buckets that match how you think about your work. For a videographer, something like:</p>
+  <pre><code>my-prompts/
+├─ README.md
+├─ ads/
+│   ├─ cinematic-ad.txt
+│   └─ product-closeup.txt
+├─ ai-video/
+│   ├─ veo-recipes.txt
+│   └─ runway-shots.txt
+└─ reusable/
+    └─ brand-voice.txt</code></pre>
+  <ol class="steps">
+    <li>In Explorer, create folders <code>ads</code>, <code>ai-video</code>, <code>reusable</code> inside the repo.</li>
+    <li>Drag your existing prompt files into the right folders.</li>
+    <li>Back in GitHub Desktop, the Changes panel shows the files moving. Commit: <code>Organize prompts into folders</code>, then push.</li>
+  </ol>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Exactly like bins in your editing project — <em>Footage</em>, <em>Audio</em>, <em>Graphics</em>. Folders in a repo are bins. Future-you finds things in seconds instead of scrolling.
+  </div>
+
+  <h2>2. Write a README</h2>
+  <p>A <strong>README.md</strong> is the welcome note that shows on the repo's front page on GitHub.com. It's a plain text file written in <strong>Markdown</strong> (simple formatting). It should answer: what is this, and how do I use it?</p>
+  <ol class="steps">
+    <li>Open the <code>README.md</code> that was created with the repo.</li>
+    <li>Replace its contents with something like the example below.</li>
+    <li>Commit <code>Write README</code> and push. Refresh the repo on github.com — the README now renders beautifully on the front page.</li>
+  </ol>
+  <pre><code># My Prompts
+
+My personal library of prompts for ads and AI video.
+
+## Folders
+- `ads/` — brand ad prompts
+- `ai-video/` — AI video generation recipes
+- `reusable/` — brand voice and snippets I reuse everywhere
+
+## How I use this
+Copy a prompt, adapt the bracketed bits, paste into the tool.</code></pre>
+
+  <h2>3. A quick taste of Markdown</h2>
+  <table>
+    <tr><th>Type this</th><th>You get</th></tr>
+    <tr><td><code># Title</code></td><td>A big heading</td></tr>
+    <tr><td><code>## Section</code></td><td>A smaller heading</td></tr>
+    <tr><td><code>- item</code></td><td>A bullet point</td></tr>
+    <tr><td><code>`code`</code></td><td>Inline <code>code</code> styling</td></tr>
+    <tr><td><code>**bold**</code></td><td>Bold text</td></tr>
+  </table>
+
+  <div class="callout">
+    <span class="tag">Why this helps you specifically</span>
+    When you later build skills, a good README + folder layout is what lets an AI agent (and other people) understand your library. Tidy structure isn't neatness for its own sake — it's what makes the library <em>usable</em>.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes">About READMEs — GitHub Docs</a>.
+  </div>
+
+  <h2>4. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What is a README and where does it show?</summary>
+      <p>A Markdown welcome file that renders on the repo's front page on GitHub.com.</p>
+    </details>
+    <details>
+      <summary>In Markdown, how do you write a top heading?</summary>
+      <p>Put a single hash and a space before the text, like "# Title" on its own line.</p>
+    </details>
+    <details>
+      <summary>Why organize prompts into folders?</summary>
+      <p>So the library scales and stays findable for you, other people, and an AI agent.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>Your repo is now a real library, not a junk drawer.</strong> One more Intermediate skill: telling Git to ignore your huge raw video files so you never accidentally try to sync 40 GB. That's next.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0006-daily-loop.html">← 0006 · The Daily Loop</a>
+    <span class="spacer"></span>
+    <a href="0008-gitignore.html">0008 · .gitignore →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>

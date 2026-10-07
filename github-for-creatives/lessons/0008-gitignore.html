@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0008 · .gitignore</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="0007-organize-a-repo.html">← 0007 · Organizing a Repo</a>
+    <span class="spacer"></span>
+    <a href="../index.html">All lessons ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0008 · Keep It Light <span class="level">Intermediate</span></p>
+  <h1>.gitignore — Don't Sync the Heavy Stuff</h1>
+  <p class="lede">Git is built for text, not 40 GB of RAW footage. A .gitignore file tells it which files to leave alone — essential for a videographer.</p>
+
+  <p>This lesson saves you real pain. GitHub rejects huge files and your syncs would crawl. About <strong>8 minutes</strong>. Your win: a <code>.gitignore</code> that keeps your prompts and recipes in Git while your giant media files stay out.</p>
+
+  <h2>1. Why this matters so much for you</h2>
+  <p>Git shines at <strong>small text files</strong> — prompts, recipes, notes, code. It is <em>bad</em> at giant binary files like <code>.mp4</code>, <code>.mov</code>, <code>.braw</code>, <code>.r3d</code>, project caches. GitHub even blocks files over 100 MB. If you drop a 4K clip into a repo, syncing jams or fails.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Think of Git as your <strong>script and shot-list vault</strong>, not your media drive. You version the <em>instructions</em> that make the video — the prompts, the recipes — not the heavy exports. The footage lives on your drives and cloud storage; the recipe to recreate it lives in Git.
+  </div>
+
+  <h2>2. What .gitignore is</h2>
+  <p>A <strong>.gitignore</strong> is a plain text file at the top of your repo. Each line is a pattern for files Git should <strong>pretend don't exist</strong> — it won't track them, commit them, or try to sync them. The real files stay on your disk; Git just looks away.</p>
+
+  <h2>3. Create one</h2>
+  <ol class="steps">
+    <li>Open your repo folder in Explorer.</li>
+    <li>Make a new text file named exactly <code>.gitignore</code> — note the leading dot and <strong>no</strong> <code>.txt</code> on the end. (In Notepad's Save dialog, set "Save as type" to <strong>All Files</strong> so it doesn't add <code>.txt</code>.)</li>
+    <li>Paste the patterns below, save.</li>
+  </ol>
+  <pre><code># Heavy media — keep these OUT of Git
+*.mp4
+*.mov
+*.braw
+*.r3d
+*.avi
+*.mkv
+
+# Big images / exports
+*.psd
+*.tiff
+*.png
+*.jpg
+
+# System junk
+Thumbs.db
+.DS_Store</code></pre>
+  <ol class="steps">
+    <li>Back in GitHub Desktop, you'll see <code>.gitignore</code> in Changes. Commit <code>Add gitignore for media files</code> and push.</li>
+  </ol>
+
+  <div class="callout">
+    <span class="tag">Test it</span>
+    Drop a <code>.mp4</code> into the repo folder. Check GitHub Desktop — it should <strong>not</strong> appear in Changes. Git is ignoring it, exactly as intended. Remove the test file after.
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">One gotcha</span>
+    .gitignore only ignores files Git <em>isn't already tracking</em>. If you committed a big file before adding the rule, you must remove it from the repo separately. Easiest fix: ask me when it happens — I'll walk you through it.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    <a href="https://docs.github.com/en/get-started/git-basics/ignoring-files">Ignoring files — GitHub Docs</a>. Ready-made templates: <a href="https://github.com/github/gitignore">github/gitignore</a>.
+  </div>
+
+  <h2>4. Retrieval check</h2>
+  <div class="quiz">
+    <details>
+      <summary>What kind of files does Git handle well, and badly?</summary>
+      <p>Well: small text files like prompts and recipes. Badly: large binary media like video and PSDs.</p>
+    </details>
+    <details>
+      <summary>What does a line in .gitignore do?</summary>
+      <p>It tells Git to ignore matching files — not track, commit, or sync them, though they stay on disk.</p>
+    </details>
+    <details>
+      <summary>Why must the file be named exactly .gitignore?</summary>
+      <p>Git only recognizes that exact name; a trailing .txt makes it an ordinary file Git ignores the rule in.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>That's the full Intermediate tier — you can clone, loop, organize, and keep repos lean.</strong> You're now genuinely dangerous with GitHub Desktop. The Advanced tier starts with branches (safe experiments), then — finally — the terminal, and then you build your own skill. Onward.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0007-organize-a-repo.html">← 0007 · Organizing a Repo</a>
+    <span class="spacer"></span>
+    <a href="0009-branches.html">0009 · Branches →</a>
+    <span class="muted">·</span>
+    <a href="../MISSION.md">mission</a>
+    <span class="muted">·</span>
+    <a href="../reference/glossary.html">glossary</a>
+  </nav>
+
+</div>
+</body>
+</html>
