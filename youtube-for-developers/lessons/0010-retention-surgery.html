@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0010 · Retention Surgery — Fix the Drop-off</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0010 · Optimize <span class="level advanced">Advanced</span></p>
+  <h1>Retention Surgery — Fix the Drop-off</h1>
+  <p class="lede">The retention graph is a flame graph for your video: it shows exactly where viewers leave, and every dip is a line of "code" you can profile and fix in the next one.</p>
+
+  <p>This is a <strong>~7 minute</strong>, fully faceless lesson, and it builds directly on the three metrics from lesson 0009. Your win: you'll open the audience-retention report, read it like a profiler flame graph, name the <em>one</em> biggest drop-off, diagnose its likely cause, and know the fix — applied to your <strong>next</strong> video, not the one already published.</p>
+
+  <h2>1. The retention graph is a flame graph</h2>
+  <p>In YouTube Studio, open any video → <strong>Analytics</strong> → <strong>Engagement</strong> → the <strong>Audience retention</strong> chart. The x-axis is video time (0% to 100%); the y-axis is the percentage of viewers still watching at that moment. It always starts at 100% and slopes down — the question is never <em>whether</em> it drops, but <em>where</em> and <em>how fast</em>.</p>
+  <p>You don't read it left to right looking for "good." You read it looking for <strong>cliffs</strong> — sudden vertical drops — and <strong>flat shelves</strong> where almost nobody leaves. A cliff is a moment that cost you viewers. A shelf is a moment that held them.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The retention graph is a <strong>flame graph</strong>. You don't optimize a slow program by rewriting random functions — you look for the <strong>widest bar</strong>, the one hot path eating all the time, and you fix that first. Same here: a 20-second video has a hundred moments, but one or two cliffs are costing you most of the audience. Find the tallest cliff, treat it as the <code>hot path</code>, and ignore the rest until it's fixed. Micro-optimizing a dip that loses 2% of viewers while a 40% cliff sits untouched is premature optimization.
+  </div>
+
+  <h2>2. Read the two shapes that matter</h2>
+  <p>Almost every beginner video shows the same two diagnosable patterns. Learn to spot them and you've learned 80% of retention reading.</p>
+  <table>
+    <tr><th>Shape on the graph</th><th>What it means</th><th>Your mental model</th></tr>
+    <tr><td><strong>The early cliff</strong> (steep drop in the first 15–30 seconds)</td><td>The intro didn't earn the stay. This is the single most important part of the whole graph.</td><td>A slow cold-start / a landing page that fails to state the value above the fold.</td></tr>
+    <tr><td><strong>Mid-video dips</strong> (localized drops partway through)</td><td>A specific moment bored or confused viewers — a tangent, a ramble, a section that broke the promise.</td><td>A latency spike in one endpoint — the rest is fine, one call is slow.</td></tr>
+    <tr><td><strong>A gentle, steady slope</strong> (no cliffs)</td><td>Healthy. People leave gradually, which is normal and expected.</td><td>Steady memory reclamation — nothing to page on.</td></tr>
+  </table>
+  <p>The early cliff is where you spend your attention. On most faceless dev videos, if you lose people, you lose the majority in the first 30 seconds — before you've delivered anything. Fix the opening and you lift the <em>entire</em> curve, because everyone who stays past the intro is counted in every later percentage.</p>
+
+  <h2>3. Common causes — and the fix for each</h2>
+  <p>A drop-off is a symptom. Here are the usual root causes for a faceless screen-recording video, matched to where they show on the graph and what you change next time:</p>
+  <ul class="plain">
+    <li><strong>Slow intro (early cliff)</strong> → you spent 45 seconds on "hey, in this video we'll..." and a logo animation. <em>Fix:</em> cut to the payoff in the first 5–10 seconds. Show the finished result, or state the exact problem you're solving, before anything else.</li>
+    <li><strong>Broken promise (early-to-mid cliff)</strong> → the title/thumbnail promised X, the video opens on Y. Viewers feel bait-and-switched and bail. <em>Fix:</em> make the first 15 seconds visibly match the thumbnail's promise.</li>
+    <li><strong>Tangents and rambling (mid dips)</strong> → a 90-second detour into setup, backstory, or an unrelated aside. <em>Fix:</em> cut it in the edit. If it's not load-bearing for the promise, it's dead weight.</li>
+    <li><strong>Dead air / unedited pauses (slow grind downward)</strong> → long silences while you type or think. <em>Fix:</em> tighten with jump cuts; remove the gaps (lesson 0007).</li>
+  </ul>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    This is <strong>profile → identify bottleneck → fix → re-measure</strong>, the exact loop you run on slow code. You never guess which function is slow; you attach a profiler, read the numbers, change the one thing, and run it again. Retention is the same loop at the channel level: read the graph, change the one biggest cause, ship the <em>next</em> video, and read <em>its</em> graph. Fixing one cliff per video is steady, compounding refactoring — not a rewrite.
+  </div>
+
+  <h2>4. The cardinal rule — operate on the next video, not the published one</h2>
+  <p>Here's the part beginners get wrong: they see a cliff on a live video and want to re-edit and re-upload it. Don't. Re-uploading resets the video's momentum, splits its stats, and rarely recovers a video the algorithm already sized up. The published video is <strong>immutable</strong> — treat it as shipped.</p>
+  <p>Retention data is <em>feedback for the pipeline</em>, not a patch for the current artifact. You carry the lesson forward: "last video lost 35% in the first 20 seconds because the intro dragged — next time, open on the result." Over a handful of videos, each one's opening cliff gets shallower, and your whole channel's average retention climbs.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    A published video is a <strong>released build in prod</strong>. You don't hot-patch a shipped binary in place and hope — you write the fix into the <code>main</code> branch and it rides out in the next release. Retention is your <strong>post-incident review</strong>: one honest finding, fed into the next cycle, not a frantic re-deploy of the thing that's already out.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    For exactly how the audience-retention report works — absolute vs. relative retention, the intro/body/ending breakdown, and how to spot spikes and dips — read YouTube's own reference: <a href="https://support.google.com/youtube/answer/9314415">Check your audience retention — YouTube Help</a>. Trust this over any blog claiming a universal "good retention %"; your baseline is your own past videos.
+  </div>
+
+  <h2>5. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Why is the first 15–30 seconds of the retention graph the part you should fix first?</summary>
+      <p>Because it's the widest bar on the flame graph — the early cliff is where most faceless videos lose the majority of viewers, before any value is delivered. Everyone who survives the intro is counted in every later percentage, so lifting the opening lifts the entire curve.</p>
+    </details>
+    <details>
+      <summary>You see a sharp localized dip two minutes in. What's the likely cause and the fix?</summary>
+      <p>A tangent, ramble, or confusing section at that moment — the latency-spike pattern. Fix it in the edit: cut the detour if it's not load-bearing for the video's promise, and tighten the surrounding pace.</p>
+    </details>
+    <details>
+      <summary>You spot a big drop-off on a video that's already live. Should you re-edit and re-upload it?</summary>
+      <p>No. Treat the published video as an immutable released build. Retention data is feedback for the pipeline — carry the fix into your next video, don't hot-patch the one in prod. Re-uploading resets momentum and splits stats for little gain.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now read the retention graph like a flame graph, name the biggest cliff, and fix its root cause in the next video.</strong> The loop is profile → diagnose → fix → re-measure — and the published video stays shipped. Next lesson, <em>Consistency without burnout</em>, we turn this feedback loop into a sustainable cadence so you keep shipping without torching yourself. Stuck reading your own graph? Ask — bring the shape and we'll diagnose it together.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0009-publish-and-analytics.html">← 0009 · Publish &amp; analytics</a>
+    <span class="spacer"></span>
+    <a href="0011-consistency-without-burnout.html">0011 · Consistency →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

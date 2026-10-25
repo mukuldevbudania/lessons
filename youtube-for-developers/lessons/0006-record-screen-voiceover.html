@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0006 · Record a Screen + Voiceover Take</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0006 · Record <span class="level intermediate">Intermediate</span></p>
+  <h1>Record a Screen + Voiceover Take</h1>
+  <p class="lede">Your script is done, so now you capture it — a clean screen recording and clear voiceover are 90% of a good faceless video, and OBS does both for free.</p>
+
+  <p>This is a hands-on lesson, about <strong>8 minutes</strong> to read and maybe 20 to do your first test. No camera needed — this is the faceless path: OBS captures your screen and your mic, you talk over what you're doing. Your win: you'll have OBS configured correctly, know how to set audio levels so you don't clip, and run a 20-second test take <em>before</em> you burn energy on the real recording.</p>
+
+  <h2>1. Install OBS and set the output format once</h2>
+  <p>OBS Studio is the standard free, open-source recorder — it's what most faceless creators use. Install it, then set a few project defaults once and never think about them again. These are your "build settings": get them right at the start and every take is consistent.</p>
+
+  <ol class="steps">
+    <li>Download and install <strong>OBS Studio</strong> from the official site (links in the source callout below). It's on Windows, macOS, and Linux.</li>
+    <li>Open <strong>Settings → Video</strong>. Set <em>Base (Canvas) Resolution</em> and <em>Output (Scaled) Resolution</em> both to <strong>1920×1080</strong>. Set <em>Common FPS</em> to <strong>30</strong> — fine for talking-over-code; use 60 only for fast gameplay or smooth motion.</li>
+    <li>Open <strong>Settings → Output</strong>. Switch <em>Output Mode</em> to <strong>Advanced</strong>, go to the <em>Recording</em> tab, and set <em>Recording Format</em> to <strong>MKV</strong> (it survives a crash without corrupting the file — you can remux to MP4 after).</li>
+    <li>Open <strong>Settings → Audio</strong> and confirm your <em>Mic/Auxiliary Audio</em> is set to your actual microphone, not "Default."</li>
+  </ol>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    These settings are your <code>.env</code> and build config. You set resolution, fps, and format <strong>once</strong>, commit them, and every recording inherits the same known-good configuration. Fiddling with them per-take is like editing production config by hand on every deploy — it's how you end up with one video at the wrong resolution.
+  </div>
+
+  <h2>2. Add your capture sources</h2>
+  <p>OBS is built around <em>sources</em> — each is a layer in your scene, like components composed into a page. For a faceless screen tutorial you need two: one for picture, one for sound.</p>
+
+  <div class="clickpath">
+    In the <strong>Sources</strong> panel click <strong>+</strong> → choose <strong>Display Capture</strong> (whole monitor) <em>or</em> <strong>Window Capture</strong> (one app only) → name it → <strong>OK</strong>. Then click <strong>+</strong> again → <strong>Audio Input Capture</strong> → pick your mic → <strong>OK</strong>.
+  </div>
+
+  <p>Prefer <strong>Window Capture</strong> when you can — it records just your editor or browser and won't accidentally leak a Slack notification or a second monitor into frame. Use <strong>Display Capture</strong> only when you need to move between apps during the take. Either way, close chat apps and silence notifications before you hit record.</p>
+
+  <h2>3. Set audio levels so you never clip</h2>
+  <p>This is the one step beginners skip and regret. In OBS's <em>Audio Mixer</em>, each source has a level meter. While talking at your normal recording volume, watch the meter and aim for peaks in the <strong>yellow zone, roughly −12 dB to −6 dB</strong>. If it hits the far right (0 dB / red), you're <em>clipping</em> — the audio distorts permanently and no edit can fix it. Drag the source's gain/volume slider down until your loudest words stay out of the red.</p>
+
+  <ul class="plain">
+    <li><strong>Too quiet</strong> (meter barely moves, peaks below −30 dB): raise gain — quiet audio you boost later also boosts the hiss.</li>
+    <li><strong>Clipping</strong> (peaks slam into red): lower gain, or back off the mic a few inches.</li>
+    <li><strong>Just right</strong>: normal speech lives around −18 to −12 dB, loudest peaks under −6 dB with headroom to spare.</li>
+  </ul>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Clipping is an <strong>integer overflow</strong> for sound. The signal exceeds the ceiling the format can represent, so it wraps into garbage — and just like an overflow in production, you can't reconstruct the real value afterward. Setting levels with headroom is defensive coding: leave room below the max so a loud laugh doesn't corrupt the sample.
+  </div>
+
+  <h2>4. Voiceover: separate track or live-over?</h2>
+  <p>You have two ways to get narration onto a screen recording, and the choice is a real trade-off:</p>
+
+  <table>
+    <tr><th>Approach</th><th>How</th><th>Best when</th></tr>
+    <tr><td><strong>Live voiceover</strong></td><td>Talk while you screen-record, in one pass.</td><td>Casual walkthroughs, you're comfortable narrating on the fly, you want speed.</td></tr>
+    <tr><td><strong>Separate track</strong></td><td>Record silent screen capture first, then record narration over the footage in your editor.</td><td>Tight scripts, complex demos, or when you fumble the on-the-fly take and want clean audio.</td></tr>
+  </table>
+
+  <p>Start with <strong>live voiceover</strong> — it's faster and good enough for your first videos. Move to a separate track later when you want polish: it lets you re-record a muffed sentence without re-recording the screen. Either way, a few room basics help: record in a small soft space (a closet of clothes beats a bare office), keep the mic 6–8 inches from your mouth and slightly off-axis to dodge plosive pops, and stop your HVAC/fan for the take.</p>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    Install, source setup, and audio details come from OBS Studio's own documentation: <a href="https://obsproject.com/">OBS Studio — official site</a> and the <a href="https://obsproject.com/help">OBS Help &amp; Resources</a>. Trust these over any recording-tips blog.
+  </div>
+
+  <h2>5. Always do a 20-second test take first</h2>
+  <p>Before the real recording, hit <strong>Start Recording</strong>, talk for 20 seconds while clicking around as you will in the real take, then <strong>Stop</strong> and <em>play it back with headphones</em>. Check three things: audio is clear and un-clipped, the right window/screen is captured, and no notification or private tab snuck into frame. Fix anything now — a 20-second test costs nothing; discovering your mic was muted after a 15-minute take costs the whole afternoon.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The test take is your <strong>smoke test in staging</strong>. You don't ship a release straight to prod without one request confirming the thing boots — you don't commit to a full recording without 20 seconds confirming video and audio actually captured. Cheap check, catches the expensive failures.
+  </div>
+
+  <h2>6. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>What dB range should your voice peak at, and what happens if it hits 0 dB?</summary>
+      <p>Aim for peaks around −12 to −6 dB (the yellow zone). Hitting 0 dB means clipping — the audio distorts permanently and can't be repaired in editing.</p>
+    </details>
+    <details>
+      <summary>When would you record a separate voiceover track instead of narrating live?</summary>
+      <p>For tightly scripted or complex demos, or when you fumble the live take — a separate track lets you re-record narration without re-recording the screen footage.</p>
+    </details>
+    <details>
+      <summary>Why run a 20-second test take before the real recording?</summary>
+      <p>To confirm audio is clear and un-clipped, the correct window/screen is captured, and nothing private is in frame — catching a muted mic or wrong source cheaply before you invest in a full take.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now capture a clean take.</strong> OBS is configured, your levels sit safely out of the red, and you test before you commit. Next lesson, <em>Edit the First Cut</em>, we take that raw footage and trim it into something watchable — cutting dead air, mistakes, and the "um"s. Stuck on OBS levels or source setup? Ask me — that's what I'm here for.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0005-script-and-structure.html">← 0005 · Script &amp; structure</a>
+    <span class="spacer"></span>
+    <a href="0007-edit-first-cut.html">0007 · Edit the first cut →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

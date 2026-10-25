@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0005 · Script &amp; Structure — Hook, Promise, Payoff</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0005 · Script <span class="level intermediate">Intermediate</span></p>
+  <h1>Script &amp; Structure — Hook, Promise, Payoff</h1>
+  <p class="lede">Every video that holds attention has the same three-part shape: a hook that earns the next 15 seconds, a promise that tells the viewer what they'll walk away with, and a payoff that delivers it without padding.</p>
+
+  <p>This is a writing lesson, not a recording lesson — about <strong>7 minutes</strong>, no camera, no editor, nothing to install. Your win: a repeatable structure you can pour any topic into, plus a tight beat outline for your next video that cuts the throat-clearing intro you didn't know you were about to record.</p>
+
+  <h2>1. The hook controls everything downstream</h2>
+  <p>In Lesson 0001 you learned retention is one of the two signals YouTube rewards. Retention isn't flat — it's a curve, and it falls off a cliff in the <strong>first 10–15 seconds</strong>. That opening is where the most viewers leave, so it's where the most leverage is. A strong hook doesn't just keep people watching now; it lifts the <em>average</em> view duration YouTube uses to decide whether to recommend the video at all.</p>
+  <p>The hook answers one silent question the viewer is asking: "why should I give you the next minute?" It can be the result they'll get ("by the end you'll have X running"), a sharp problem ("your tests pass locally and fail in CI — here's why"), or a surprising claim. What it must <em>not</em> be is a warm-up: "Hey everyone, welcome back to the channel, so today I wanted to talk about…" is pure latency before the response starts.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The first 10 seconds are your <strong>function signature</strong>. A good signature tells the caller exactly what they get — <code>fetchUser(id): User</code> — before they read the body. A bad hook is a function named <code>doStuff()</code> with no return type: the caller (viewer) has no idea what calling it buys them, so they move on.
+  </div>
+
+  <h2>2. The promise is a contract you must honour</h2>
+  <p>Right after the hook, state plainly what the viewer will be able to do or understand by the end. This is the <strong>promise</strong>. It does two jobs: it filters out people who want something else (good — they'd have bounced and hurt retention anyway), and it sets the bar you now have to clear. The viewers who stay are the ones who wanted exactly this, and they're the ones who subscribe.</p>
+  <p>The failure mode is promising big and delivering small — "the only Docker video you'll ever need" followed by three surface tips. The viewer feels the gap, drops off, and YouTube reads that as a weak video. Promise something concrete and bounded, then over-deliver slightly.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The promise is an <strong>API contract</strong>. Once you publish <code>GET /users/:id → 200 User</code>, callers build on it and a <code>500</code> is a broken contract. Your intro publishes a contract to the viewer; the rest of the video is the implementation that has to satisfy it. Breaking it — promising a payoff you never deliver — is a bug with a hard cost: a drop-off at the exact moment they expected the goods.
+  </div>
+
+  <h2>3. The payoff: deliver, in order, without padding</h2>
+  <p>The payoff is the body — the actual demonstration, explanation, or build. Three rules keep it tight:</p>
+  <ul class="plain">
+    <li><strong>Front-load the value.</strong> Show the result or the key insight early, then unpack it. Don't save the good part for minute nine; most of the audience won't reach minute nine.</li>
+    <li><strong>One idea per segment.</strong> Each beat should advance toward the promise. If a tangent doesn't serve it, cut it — it's dead weight that drops retention.</li>
+    <li><strong>End when you're done.</strong> No rambling outro. A one-line recap and a single clear next step (watch the next video, try the thing) is enough.</li>
+  </ul>
+  <p>You don't need a word-for-word script unless you want one. A <strong>beat outline</strong> — one line per segment — is usually better for a faceless screen recording: it keeps you on-structure while letting the voiceover stay natural. For code-heavy demos, a few verbatim lines at tricky transitions prevents the "umm, let me find that file" dead air.</p>
+
+  <table>
+    <tr><th>Part</th><th>Timing</th><th>Job</th></tr>
+    <tr><td>Hook</td><td>0:00–0:15</td><td>Earn the next 15 seconds — result, problem, or surprise</td></tr>
+    <tr><td>Promise</td><td>~0:15–0:30</td><td>State the concrete thing they'll leave with</td></tr>
+    <tr><td>Payoff</td><td>rest of video</td><td>Deliver it, front-loaded, one idea per beat</td></tr>
+    <tr><td>Close</td><td>last ~15s</td><td>One-line recap + one clear next step</td></tr>
+  </table>
+
+  <h2>4. Write a beat outline for your next video</h2>
+  <p>Open a plain text file and write the structure before you touch OBS. Keep each line to a sentence.</p>
+  <ol class="steps">
+    <li>Write the <strong>promise</strong> first, in one sentence: "By the end you'll be able to ___." If you can't finish it, the video has no focus yet.</li>
+    <li>Write the <strong>hook</strong> second (yes, after the promise — the hook sells the promise). Make it a result, a pain, or a surprising claim. Delete any "welcome back" sentence.</li>
+    <li>List the <strong>payoff beats</strong> — 3 to 6 lines, each one idea, ordered so value comes first.</li>
+    <li>Write the <strong>close</strong>: one-line recap, one next step.</li>
+    <li>Re-read the beats and delete any that don't serve the promise. That's your script.</li>
+  </ol>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    A beat outline is a <strong>PR description</strong>. The title is your hook, the "what this does" line is your promise, and the bullet summary is your payoff beats. A reviewer who reads a tight PR description knows what to expect before reading the diff — exactly what a viewer gets from a well-structured intro. A PR titled "misc changes" with no description is the video that opens with "so, today…".
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    YouTube's own creator guidance stresses engaging openings and structuring videos to hold attention — see the official <a href="https://www.youtube.com/creators/">YouTube Creators</a> resources, where hook and audience-retention advice is covered in their creation guides. When a marketing blog's "perfect formula" disagrees, trust the platform's own channel.
+  </div>
+
+  <h2>5. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Why does the first 10–15 seconds matter more than any other part of the video?</summary>
+      <p>Retention drops off fastest there, so it's where you lose the most viewers — and it pulls down the average view duration YouTube uses to decide whether to recommend the video at all. Fixing the hook has the highest leverage.</p>
+    </details>
+    <details>
+      <summary>What's the difference between the hook and the promise?</summary>
+      <p>The hook earns the next few seconds of attention (a result, problem, or surprise). The promise states the concrete thing the viewer will be able to do or understand by the end — a contract the rest of the video has to satisfy.</p>
+    </details>
+    <details>
+      <summary>Why write the promise before the hook in your outline?</summary>
+      <p>The hook's job is to sell the promise. You can't write a compelling opening until you know the concrete payoff it's advertising — so you define the payoff (promise) first, then craft the hook to point at it.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>Hook, promise, payoff — that's the shape of every video that holds attention.</strong> You can now write a tight beat outline, treat your intro like a function signature and an API contract, and cut the throat-clearing before it ever hits the mic. Next up, <em>Record a take</em>: turning that outline into screen recording and voiceover without re-recording ten times. Stuck on structuring a specific topic? Bring it to me — we'll outline it together.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0004-gear-and-software.html">← 0004 · Gear &amp; software</a>
+    <span class="spacer"></span>
+    <a href="0006-record-screen-voiceover.html">0006 · Record a take →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

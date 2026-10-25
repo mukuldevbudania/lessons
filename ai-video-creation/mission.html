@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission — AI Brand-Ad Course</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="../assets/theme.js"></script>
+</head><body>
+<nav class="lesson-nav top"><a href="../index.html">↑ Courses</a><a class="next" href="index.html">Course Home ▸</a></nav>
+
+<div class="kicker">Mission</div>
+<h1>Mission</h1>
+<p class="subtitle">The deliverable every lesson is judged against — read this first, revisit it whenever the work drifts.</p>
+
+<h2>What I want to be able to do</h2>
+<p>Produce <b>cinematic brand advertisements</b> end-to-end using <b>open-source AI models</b>, from character/product design through to a finished, graded, sound-designed video.</p>
+
+<h2>Why it matters</h2>
+<p>Brand ads are the deliverable. That means the bar is:</p>
+<ul>
+<li><b>Consistency</b> — the same character / product / brand look must hold across every shot.</li>
+<li><b>Control</b> — the output has to match a brief, not just "look cool".</li>
+<li><b>Shippable licensing</b> — every model in the pipeline must be legal for commercial use.</li>
+<li><b>Polish</b> — color grade, pacing, sound. The edit matters as much as the generation.</li>
+</ul>
+
+<h2>Constraints (these shape every lesson)</h2>
+<div class="callout warn"><b>Hardware: NVIDIA DGX Spark.</b> 128 GB unified LPDDR5x memory, GB10 Grace Blackwell,
+~1 PFLOP FP4 — BUT only ~273 GB/s memory bandwidth. → Models <i>fit</i> easily; they run <i>slowly</i>.
+Workflow is built around <b>batch / overnight rendering and tight prompt iteration on stills</b>, not real-time video scrubbing.</div>
+<ul>
+<li><b>Story/writing: Claude ($20 Pro sub).</b> Used for concept, script, shot lists, prompts.</li>
+<li><b>Edit/finish: DaVinci Resolve (free edition).</b> Grade, cut, sound, delivery.</li>
+<li><b>Models: open-source only.</b> No Runway/Kling/Veo/Sora/Midjourney in the shipping pipeline.</li>
+</ul>
+
+<h2>Hard licensing rule for this mission</h2>
+<p>A brand ad is a <b>commercial</b> use. Therefore:</p>
+<div class="callout ok"><b>✅ Commercial-OK image models:</b> Qwen-Image (Apache-2.0), FLUX.1 [schnell] (Apache-2.0),
+SDXL (Stability Community License, commercial-OK with conditions), HiDream, Lumina-2.<br>
+<b>✅ Commercial-OK video models:</b> Wan 2.2, HunyuanVideo 1.5, LTX-Video — all Apache-2.0.</div>
+<div class="callout bad"><b>❌ FLUX.1 [dev] is NON-COMMERCIAL</b> — great quality, but do NOT ship brand work made with it.
+Always re-check the weight's license card before shipping; licenses change.</div>
+
+<h2>Definition of done (first milestone)</h2>
+<p>A single 15–30s brand spot for a chosen (even fictional) brand, where:</p>
+<ol>
+<li>The hero character OR product is visibly the <i>same</i> across ≥4 shots.</li>
+<li>It follows a written brief + shot list (not improvised).</li>
+<li>It is cut, graded, and sound-designed in Resolve.</li>
+<li>Every asset is from a commercial-licensed open model.</li>
+</ol>
+
+<nav class="lesson-nav bottom"><a href="../index.html">↑ Courses</a><a class="next" href="index.html">Course Home ▸</a></nav>
+<footer>
+Mission · <a href="reference/pipeline.html">pipeline</a> ·
+<a href="reference/glossary.html">glossary</a> · <a href="reference/spark-fit.html">spark-fit</a><br>
+<i>Last updated: 2026-10-05. Update whenever the mission shifts.</i>
+</footer>
+</body></html>

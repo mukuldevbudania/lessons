@@ -33,7 +33,25 @@
     text-transform:uppercase;color:var(--accent);margin-top:.7rem}
   footer{color:var(--muted);font-family:var(--font-ui);font-size:.8rem;
     margin-top:3.5rem;border-top:1px solid var(--rule);padding-top:1.2rem}
+
+  /* ---- per-course theme picker ---- */
+  .course-row{background:var(--surface);border:1px solid var(--rule);
+    border-left:4px solid var(--accent);border-radius:10px;overflow:hidden}
+  .course-row .course{background:none;border:none;border-radius:0;margin:0}
+  .course-row .course:hover{transform:none}
+  .theme-pick{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;
+    padding:.75rem 1.6rem 1rem;border-top:1px dashed var(--rule);
+    font-family:var(--font-ui)}
+  .theme-pick .tp-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);margin-right:.2rem}
+  .swatch{width:1.35rem;height:1.35rem;border-radius:50%;border:2px solid transparent;
+    cursor:pointer;padding:0;outline:none;transition:transform .1s,border-color .1s}
+  .swatch:hover{transform:scale(1.15)}
+  .swatch[aria-pressed="true"]{border-color:var(--heading);box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--heading)}
+  .swatch.is-default{background:repeating-conic-gradient(#555 0 25%,#888 0 50%);}
+  .tp-current{font-size:.74rem;color:var(--muted);margin-left:.3rem}
 </style>
+<script src="assets/theme.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -44,28 +62,88 @@
 
   <ul class="courses">
 
-    <li><a class="course" href="github-for-creatives/index.html">
-      <h2>GitHub for Creatives</h2>
-      <p>From "never opened a terminal" to running your own version-controlled skills library. GUI-first, built for Windows, no jargon.</p>
-      <div class="meta">12 lessons · Beginner → Advanced</div>
-    </a></li>
+    <li class="course-row">
+      <a class="course" href="github-for-creatives/index.html">
+        <h2>GitHub for Creatives</h2>
+        <p>From "never opened a terminal" to running your own version-controlled skills library. GUI-first, built for Windows, no jargon.</p>
+        <div class="meta">12 lessons · Beginner → Advanced</div>
+      </a>
+      <div class="theme-pick" data-course="github"></div>
+    </li>
 
-    <li><a class="course" href="ai-video-creation/index.html">
-      <h2>AI Brand-Ad Course</h2>
-      <p>Make a cinematic brand ad on a DGX Spark using only commercial-safe open models — pipeline, keyframes, motion, grade, ship.</p>
-      <div class="meta">10 lessons · Beginner → Advanced</div>
-    </a></li>
+    <li class="course-row">
+      <a class="course" href="ai-video-creation/index.html">
+        <h2>AI Brand-Ad Course</h2>
+        <p>Make a cinematic brand ad on a DGX Spark using only commercial-safe open models — pipeline, keyframes, motion, grade, ship.</p>
+        <div class="meta">10 lessons · Beginner → Advanced</div>
+      </a>
+      <div class="theme-pick" data-course="aivideo"></div>
+    </li>
 
-    <li><a class="course" href="youtube-for-developers/index.html">
-      <h2>YouTube for Developers</h2>
-      <p>From "never made a video" to running a channel — plan, record, edit, publish, and grow. Developer analogies throughout, faceless-friendly.</p>
-      <div class="meta">In progress · Beginner → Advanced</div>
-    </a></li>
+    <li class="course-row">
+      <a class="course" href="youtube-for-developers/index.html">
+        <h2>YouTube for Developers</h2>
+        <p>From "never made a video" to running a channel — plan, record, edit, publish, and grow. Developer analogies throughout, faceless-friendly.</p>
+        <div class="meta">12 lessons · Beginner → Advanced</div>
+      </a>
+      <div class="theme-pick" data-course="youtube"></div>
+    </li>
 
   </ul>
 
-  <footer>Hosted on GitHub Pages. New courses appear here as they're added.</footer>
+  <footer>Hosted on GitHub Pages. Pick a theme per course above — your choice is saved on this device and applied across that course's pages.</footer>
 
 </div>
+
+<script>
+/* Render the per-course theme swatch pickers from the shared THEMES catalog. */
+(function () {
+  var LT = window.LessonsTheme;
+  if (!LT) return;
+  var THEMES = LT.THEMES;
+  // Order the swatches are shown in.
+  var ORDER = ["default", "emerald", "youtube", "indigo", "cyan", "violet", "amber", "rose"];
+
+  document.querySelectorAll(".theme-pick").forEach(function (box) {
+    var courseKey = box.getAttribute("data-course");
+    var current = LT.get(courseKey) || "default";
+
+    var label = document.createElement("span");
+    label.className = "tp-label";
+    label.textContent = "Theme";
+    box.appendChild(label);
+
+    var cur = document.createElement("span");
+    cur.className = "tp-current";
+
+    function refreshCurrent(id) {
+      cur.textContent = (THEMES[id] && THEMES[id].label) || "Course default";
+    }
+
+    ORDER.forEach(function (id) {
+      var t = THEMES[id];
+      if (!t) return;
+      var b = document.createElement("button");
+      b.className = "swatch" + (id === "default" ? " is-default" : "");
+      b.type = "button";
+      b.title = t.label;
+      b.setAttribute("aria-label", t.label);
+      b.setAttribute("aria-pressed", String(id === current));
+      if (t.accent) b.style.background = t.accent;
+      b.addEventListener("click", function () {
+        LT.set(courseKey, id);
+        current = id;
+        box.querySelectorAll(".swatch").forEach(function (s) { s.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        refreshCurrent(id);
+      });
+      box.appendChild(b);
+    });
+
+    refreshCurrent(current);
+    box.appendChild(cur);
+  });
+})();
+</script>
 </body>
 </html>

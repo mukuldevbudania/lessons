@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0009 · Publish &amp; Read the Analytics That Matter</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0009 · Publish <span class="level advanced">Advanced</span></p>
+  <h1>Publish &amp; Read the Analytics That Matter</h1>
+  <p class="lede">Shipping the video is a checklist, not a vibe — and three numbers tell you everything about what happened after; the rest is noise.</p>
+
+  <p>This one is about <strong>8 minutes</strong>, fully faceless, and it closes the loop on a video you've already made. Your win: a repeatable publish checklist so you never forget the end screen again, plus the ability to open YouTube Studio and read the <em>three</em> metrics that actually explain your reach — and ignore the dozen that don't.</p>
+
+  <h2>1. The publish checklist — treat it like a deploy runbook</h2>
+  <p>You wouldn't push to production by clicking "deploy" and walking away; you have a pre-flight checklist. Publishing a video is the same. Before you hit Publish, every one of these is a field the recommendation system reads:</p>
+  <ul class="plain">
+    <li><strong>Title</strong> — the clickable promise. Front-load the specific payoff, keep it under ~60 characters so it isn't truncated.</li>
+    <li><strong>Description</strong> — the first 1–2 lines show in search/suggested; put the hook and keywords there. Links and detail go below the fold.</li>
+    <li><strong>Tags &amp; chapters</strong> — tags are minor now, but <strong>chapters</strong> (timestamps starting at <code>0:00</code> in the description) add a visible, searchable table of contents.</li>
+    <li><strong>Thumbnail</strong> — upload a custom one; this is your landing page (covered in lesson 0008). Never ship the auto-grabbed frame.</li>
+    <li><strong>End screen</strong> — the last 5–20 seconds: point viewers at your next video. This is the single most-skipped step by beginners.</li>
+  </ul>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The publish screen is a <strong>deploy runbook</strong>. Title/description/thumbnail are your <code>config</code> — get them wrong and the rollout fails silently. The end screen is your <strong>"next action" CTA</strong>, like redirecting a user to onboarding after signup instead of dumping them on a blank page. Skip it and every viewer is a dead end instead of a session that continues.
+  </div>
+
+  <div class="clickpath">
+    Studio → <strong>Create</strong> → <strong>Upload videos</strong> → fill <em>Details</em> (title, description, thumbnail) → <em>Video elements</em> (end screen, cards) → <em>Checks</em> → <em>Visibility</em> → <strong>Publish</strong> (or <strong>Schedule</strong>).
+  </div>
+
+  <h2>2. The only three numbers a beginner should watch</h2>
+  <p>YouTube Studio Analytics shows you dozens of charts. Early on, almost all of them are a trap — they tempt you to optimize things that don't move reach. Watch exactly three, because they form a chain: each one feeds the next.</p>
+  <table>
+    <tr><th>Metric</th><th>What it answers</th><th>Lives in</th></tr>
+    <tr><td><strong>Impressions</strong></td><td>How many times YouTube <em>showed</em> your thumbnail.</td><td>Reach tab</td></tr>
+    <tr><td><strong>Click-through rate (CTR)</strong></td><td>Of those shown, what % <em>clicked</em>.</td><td>Reach tab</td></tr>
+    <tr><td><strong>Average view duration / retention %</strong></td><td>Once they clicked, how long they <em>stayed</em>.</td><td>Engagement tab</td></tr>
+  </table>
+  <p>Read them as a funnel. Impressions is top-of-funnel demand YouTube is willing to send. CTR is whether your title+thumbnail convert that impression into a click. Retention is whether the video delivers — and it's the signal that makes YouTube send <em>more</em> impressions. High retention is the flywheel.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    These three are your <strong>SLIs</strong> — the handful of service-level indicators that actually predict health. Impressions ≈ request volume the system routes to you, CTR ≈ your acceptance rate at the edge, retention ≈ how long sessions last before they bail. Everything else in the dashboard is a <strong>vanity gauge</strong>: likes and subscriber count are like CPU-temperature readouts — interesting, occasionally, but you don't page on them and you don't tune for them.
+  </div>
+
+  <h2>3. How the three interact — so you fix the right thing</h2>
+  <p>The whole point of watching a funnel is that <em>where</em> the number is low tells you <em>what</em> to change. Diagnose, don't flail:</p>
+  <ul class="plain">
+    <li><strong>Low impressions, everything else fine</strong> → YouTube hasn't found your audience yet, or the video is brand-new. Usually a patience/topic problem, not a packaging one.</li>
+    <li><strong>Good impressions, low CTR (&lt; ~2–4% is weak for most niches)</strong> → your thumbnail/title aren't earning the click. Fix packaging — this is a landing-page problem.</li>
+    <li><strong>Good CTR, low retention</strong> → the video over-promised or opens slow. Fix the content — tighten the first 30 seconds. This is an onboarding-drop-off problem.</li>
+  </ul>
+  <p>They also gate each other: a brilliant thumbnail (high CTR) on a video people abandon (low retention) gets throttled fast, because YouTube reads the quick exits as a broken promise and stops spending impressions on you. You genuinely need both halves of the funnel healthy.</p>
+
+  <h2>4. Vanity metrics — ignore these early (on purpose)</h2>
+  <p>Subscribers, total views, likes, and comment count feel like success, but none of them is a lever you can pull reliably, and chasing them wastes the effort that belongs on CTR and retention. Views are an <em>output</em> of the three metrics above, not an input you control. Treat the vanity numbers like a star-count on a repo: nice signal of momentum, useless as a thing to optimize directly.</p>
+  <p>The one healthy habit: after each upload, open Studio once, read impressions → CTR → retention, write a one-line note on which stage was weakest, and carry that fix into the next video. That's your <code>git log</code> for the channel.</p>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    For exactly what each metric means and where it lives in Studio, use YouTube's own reference: <a href="https://support.google.com/youtube/answer/9002587">Measure your performance with the Analytics tab — YouTube Help</a>. When a growth blog invents a "magic CTR number," trust this page and your own baselines instead.
+  </div>
+
+  <h2>5. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Which publish-screen step do beginners skip most, and why does it matter?</summary>
+      <p>The end screen. Without it, every viewer who finishes is a dead end; with it, you redirect them to your next video and continue the session — which YouTube rewards.</p>
+    </details>
+    <details>
+      <summary>Name the three metrics that matter early, in funnel order, and what each one tells you.</summary>
+      <p>Impressions (how often you were shown) → CTR (what % clicked your thumbnail/title) → average view duration / retention % (how long they stayed). Impressions is demand, CTR is packaging, retention is content delivering — and retention drives more impressions.</p>
+    </details>
+    <details>
+      <summary>Good impressions but low CTR, versus good CTR but low retention — what do you fix in each case?</summary>
+      <p>Low CTR → fix packaging (thumbnail + title): it's a landing-page problem. Low retention → fix the content, especially the first 30 seconds: it's an onboarding-drop-off problem. Don't change the wrong half.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now ship cleanly and read the only dashboard that matters.</strong> Publish is a runbook, and impressions → CTR → retention are your SLIs — ignore the vanity gauges early. Next lesson, <em>Retention surgery</em>, we open the retention graph and cut the exact moments where viewers leave, like profiling a slow function and fixing the hot path. Confused about any metric? Ask — reading these correctly is the whole skill.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0008-thumbnail-and-title.html">← 0008 · Thumbnail &amp; title</a>
+    <span class="spacer"></span>
+    <a href="0010-retention-surgery.html">0010 · Retention surgery →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

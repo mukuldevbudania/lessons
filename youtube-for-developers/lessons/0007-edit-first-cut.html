@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0007 · Edit the First Cut — Trim, Pace, Captions</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0007 · Edit <span class="level intermediate">Intermediate</span></p>
+  <h1>Edit the First Cut — Trim, Pace, Captions</h1>
+  <p class="lede">Editing isn't adding polish — it's <em>deleting</em>: you cut dead air and filler until only the signal is left, the way you refactor a function down to what it needs.</p>
+
+  <p>You've got a raw screen recording with voiceover from last lesson. This is about <strong>45–90 minutes</strong> of faceless editing, no camera, in a free tool. Your win: a first cut that's tight, moves fast from the first second, and has captions — watchable, shippable, and done. Not perfect. <em>Done.</em></p>
+
+  <h2>1. Editing is deletion, not decoration</h2>
+  <p>Beginners think editing means adding — transitions, zooms, music, effects. The real work of a first cut is the opposite: you <strong>remove</strong> everything that isn't carrying weight. Long pauses while you think. The "umm, so, basically." The ten seconds where a page loads. The part where you lost your train of thought and said it twice. Cut it. Retention (the signal from Lesson 0001) lives or dies on whether each second earns the next.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    A raw recording is a first draft full of <strong>dead code</strong> — unused branches, commented-out experiments, a <code>sleep(10)</code> you left in while debugging. Editing is the cleanup pass: you delete the dead paths so the reader (viewer) only sees the code that runs. You're not adding features; you're removing noise until intent is obvious.
+  </div>
+
+  <h2>2. Protect the hook — the first 15 seconds</h2>
+  <p>Viewers decide almost immediately whether to stay. So the one place you edit <em>hardest</em> is the opening. No slow intro, no "hey guys welcome back, don't forget to subscribe," no throat-clearing. Cut straight to the promise: show the thing they came for, or state exactly what they'll be able to do by the end. Trim the very first take if it rambles — your second attempt at the opening sentence is usually the sharp one.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The hook is your <strong>function's happy path up top</strong>. Nobody wants to read 40 lines of setup and guard clauses before the thing the function actually does. Put the payoff first; defer the setup. A fast cold open is an <code>early return</code> of value.
+  </div>
+
+  <h2>3. A simple first-pass edit workflow</h2>
+  <p>Don't improvise. Run the same deterministic pass every time so editing becomes a checklist, not an art project. In a free editor like <strong>DaVinci Resolve</strong> (or your platform's built-in one), do exactly this:</p>
+  <ol class="steps">
+    <li><strong>Import &amp; one-pass watch.</strong> Drop the clip on the timeline and watch it once, start to finish, without touching anything. Note the timestamps of obvious junk.</li>
+    <li><strong>Top &amp; tail.</strong> Trim the very start (before you start talking) and the very end (after you stop). Instant tightening.</li>
+    <li><strong>Cut the dead air.</strong> Scrub the timeline and slice out long silences, loading waits, and the worst "ums." Use the razor/blade tool, delete, close the gap.</li>
+    <li><strong>Pace check.</strong> Watch again at normal speed. Any stretch where <em>you</em> feel bored, the viewer left two seconds ago. Cut deeper there.</li>
+    <li><strong>Export.</strong> 1080p, the editor's default YouTube preset. Don't hunt settings — the preset is fine.</li>
+  </ol>
+  <p>That's it for a first cut. No music, no transitions, no color grading. Those are optimizations you add <em>after</em> you've shipped a few and know what's worth the time.</p>
+
+  <h2>4. Add captions — accessibility and silent autoplay</h2>
+  <p>Captions are not optional polish; they're reach. A large share of viewers watch with sound off — in feeds, on commutes, at a desk next to other people — and autoplay in the browse feed is muted by default. No captions means those viewers scroll past. Captions also make your video usable for deaf and hard-of-hearing viewers, and the text gives YouTube more to understand your content by.</p>
+  <p>The easy path: upload your video, let YouTube auto-generate captions, then <strong>review and fix them</strong> in Subtitles. Auto-captions mangle technical terms (<code>kubectl</code>, <code>nginx</code>, your library names) every time, so a correction pass is mandatory — treat the auto-caption as a draft, not a source of truth.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Auto-generated captions are <strong>machine-generated code you still have to review</strong> — like an AI-suggested diff or a scaffolded stub. It gets you 90% there fast, but you'd never merge it unread. The review pass on captions is your <strong>code review</strong>: catch the hallucinated API names before they ship.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    How to add and edit captions, including reviewing auto-generated ones, is documented by YouTube directly: <a href="https://support.google.com/youtube/answer/2734796">Add subtitles &amp; captions — YouTube Help</a>. For the free editor, see <a href="https://www.blackmagicdesign.com/products/davinciresolve">DaVinci Resolve — Blackmagic Design</a>.
+  </div>
+
+  <h2>5. Don't over-polish the first video</h2>
+  <p>This is the trap that kills more dev channels than bad audio: you spend three weekends perfecting one video's transitions and never publish a second. Your first cut does not need to be great — it needs to <em>exist</em>. You learn editing by shipping ten rough videos, not by endlessly tuning one. Set a time box for the edit, hit it, export, move on.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Over-editing is <strong>gold-plating a v0.1</strong> — refactoring for scale you don't have and users you haven't met. Ship the MVP, get real signal, iterate. The feedback from a published video tells you what to improve far better than another hour alone in the editor.
+  </div>
+
+  <h2>6. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>What's the core mental shift about what editing a first cut actually is?</summary>
+      <p>It's <em>deletion</em>, not decoration — you remove dead air, filler, loading waits, and "ums" so every remaining second earns the next. You're not adding effects; you're cutting noise, like removing dead code.</p>
+    </details>
+    <details>
+      <summary>Why are captions worth the effort, and why can't you just trust the auto-generated ones?</summary>
+      <p>Many viewers watch with sound off and feed autoplay is muted, so no captions means they scroll past; captions also serve deaf/hard-of-hearing viewers. Auto-captions mangle technical terms (<code>kubectl</code>, library names), so you review and fix them like a code review before publishing.</p>
+    </details>
+    <details>
+      <summary>What's the risk of over-polishing your first video, and the better move?</summary>
+      <p>You burn weekends perfecting one video and never publish a second, so you never learn or get signal. Time-box the edit, ship the rough cut, and iterate across many videos — like shipping an MVP instead of gold-plating a v0.1.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now take a raw recording to a watchable, captioned first cut without over-engineering it.</strong> You know editing is deletion, the hook gets cut hardest, and auto-captions need a review pass. Next up, <em>Thumbnail &amp; title</em> — the landing page that decides whether anyone clicks in the first place. Stuck on the editor's razor tool or the captions screen? Ask me and we'll walk it.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0006-record-screen-voiceover.html">← 0006 · Record a take</a>
+    <span class="spacer"></span>
+    <a href="0008-thumbnail-and-title.html">0008 · Thumbnail &amp; title →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0011 · Consistency Without Burnout — a Sustainable Cadence</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0011 · Sustain <span class="level advanced">Advanced</span></p>
+  <h1>Consistency Without Burnout — a Sustainable Cadence</h1>
+  <p class="lede">The channel that posts a decent video every two weeks for a year beats the one that posts five brilliant videos and then goes dark — build a pipeline, not a heroic sprint.</p>
+
+  <p>This one is about <strong>7 minutes</strong>, fully faceless, and it fixes the thing that quietly kills most dev channels: not bad videos, but a cadence that collapses after the first burst of motivation. Your win: a repeatable content pipeline — a backlog, a batching rhythm, and reusable templates — that lets you ship steadily around a full-time job without torching your evenings.</p>
+
+  <h2>1. Why consistency beats intensity</h2>
+  <p>YouTube's recommendation system and your own audience both reward <em>predictability</em>, not peaks. A steady drip of videos gives the algorithm repeated, regular signals to learn who your audience is, and it trains subscribers to expect you. One spectacular week followed by three months of silence teaches both parties the opposite: that you're a coin flip. The compounding only happens if you're still publishing when it kicks in — and for a new channel that can be dozens of videos deep.</p>
+  <p>The trap for developers is that we're wired to optimize for the <em>best</em> artifact. That instinct is why the first video takes four weekends: you keep polishing. But a channel is a time series, not a single release. A "good enough, shipped" video that exists beats a "perfect" one that's still in your drafts.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Consistency over intensity is <strong>small, frequent deploys over big-bang releases</strong>. You already know a team that ships a modest change daily moves faster and breaks less than one that hoards six months of work into a terrifying quarterly launch. Each video is a small deploy: low-risk, fast feedback, easy to roll forward. The heroic all-nighter video is the big-bang release — high stress, high blast radius, and it burns out the one engineer (you) who can ship.
+  </div>
+
+  <h2>2. Build an idea backlog so you never start from zero</h2>
+  <p>The single biggest hidden cost isn't recording or editing — it's the blank page. Deciding <em>what</em> to make, from scratch, every single time, is exhausting and it's where most people quit. The fix is a standing <strong>idea backlog</strong>: a running list you add to whenever an idea strikes, so that when it's time to produce, you pull from the top instead of inventing.</p>
+  <p>Keep it anywhere you already live — a plain text file, a notes app, a Trello board, a GitHub Projects board. Every time you hit a bug worth explaining, answer a teammate's question twice, or read a doc that confused you, that's a video. Capture a one-line title and move on. A backlog of 20 ideas means you're never one bad week away from stopping.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    The idea backlog is your <strong>product backlog / issue tracker</strong>. You don't decide what to build at the start of every sprint from a cold start — you <code>groom</code> a backlog continuously and pull the top item when capacity frees up. Same move: capture ideas as "issues" the moment they appear, let them sit and get reprioritized, and never let an empty tracker be the reason work stops.
+  </div>
+
+  <h2>3. Batch the work — stop context-switching per video</h2>
+  <p>Making one video end-to-end means paying every setup cost once per video: opening the recording tools, warming up your voice, configuring the editor, exporting, uploading. <strong>Batching</strong> groups the same task across several videos so you pay each setup cost once. Record three voiceovers in one sitting while your "recording brain" is loaded; edit on a different day when your "editing brain" is loaded.</p>
+  <p>A practical rhythm for someone with a day job: pick <em>one</em> weekend morning a month as a batch session. Script two or three videos from the backlog, record them back to back, then edit one per subsequent week on a weeknight. You've front-loaded the hardest context-switch and spread the lighter work thin.</p>
+  <ol class="steps">
+    <li>Pull 2–3 titles from the backlog and outline each (reuse your script template).</li>
+    <li>Record all the screen captures and voiceovers in one session — tools stay open, setup paid once.</li>
+    <li>Edit one video per week from the recorded pile, on a fixed evening.</li>
+    <li>Schedule each finished video to publish on the same weekday — let YouTube release it for you.</li>
+  </ol>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Batching is <strong>eliminating context-switch overhead</strong>, the same reason you don't rebuild your whole project to test one function. Spinning up the recording and editing environments is your cold-start cost; running them once for three videos is a warm cache. Scheduling the publishes is a <strong>CI/CD pipeline with a cron trigger</strong> — you commit the work once in a batch, and the pipeline rolls it out on a fixed schedule without you babysitting each release.</div>
+
+  <h2>4. Reusable templates and formats — your component library</h2>
+  <p>Every video should <em>not</em> be redesigned from scratch. Standardize the parts that don't need to be creative so your energy goes only to the content:</p>
+  <ul class="plain">
+    <li><strong>A script skeleton</strong> — hook, the one promise, 2–4 steps, recap. Same shape every time (you built this back in lesson 0005).</li>
+    <li><strong>An intro/outro</strong> — a 5-second title card and a standard end-screen layout you drop in unchanged.</li>
+    <li><strong>A thumbnail template</strong> — fixed fonts, colors, and layout grid; you swap the text and one screenshot per video.</li>
+    <li><strong>A repeatable format</strong> — pick one or two show types ("I debug a real error", "5-minute intro to X") and reuse them. A format is a template for the <em>whole video</em>, not just the assets.</li>
+  </ul>
+  <p>Reusing a format also helps the viewer: a recognizable structure is easier to click and easier to finish, which feeds the retention you learned to protect in lesson 0010. Familiar isn't boring — it's trust.</p>
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Templates and a fixed format are your <strong>component library and project scaffold</strong>. You don't hand-roll a button or re-architect auth for every feature — you compose from reusable pieces and run <code>create-app</code> to scaffold the boilerplate. A video format is the same: the scaffold is fixed and tested, so each new "feature" (video) only requires the net-new logic, not a rewrite of the chrome around it.
+  </div>
+
+  <h2>5. A realistic cadence — and guarding against burnout</h2>
+  <p>Be honest about capacity. With a full-time job, <strong>one solid video every one to two weeks is an excellent, sustainable target</strong> — far better than promising weekly, missing, and feeling like a failure. Set the cadence you can hit on a bad week, not your best one. You can always surprise people by posting more; you can't un-break a promise of "every Monday."</p>
+  <p>Burnout on a side channel almost always comes from one of three places, and each has a fix:</p>
+  <table>
+    <tr><th>Burnout source</th><th>What it feels like</th><th>The fix</th></tr>
+    <tr><td><strong>Blank-page fatigue</strong></td><td>Dreading "what do I even make?"</td><td>A groomed idea backlog (§2) — pull, don't invent.</td></tr>
+    <tr><td><strong>Context-switch drain</strong></td><td>Every video feels like starting over</td><td>Batching + templates (§3–4) — pay setup once.</td></tr>
+    <tr><td><strong>Metric anxiety</strong></td><td>Checking views hourly, deflated by slow growth</td><td>Check analytics once per upload (lesson 0009); judge the <em>process</em>, not each video's numbers.</td></tr>
+  </table>
+  <p>Finally, give yourself a legitimate pause valve: a small buffer of 1–2 finished-and-scheduled videos means a busy week at work or a sick day doesn't break the streak. A buffer is slack in the system — the same reason you don't run production at 100% utilization.</p>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    For YouTube's own guidance on building a sustainable upload habit and planning content, see YouTube Creators: <a href="https://www.youtube.com/creators/">YouTube Creators — official channel &amp; resources</a>. Treat cadence advice from growth blogs ("you MUST post daily") with suspicion; the sustainable schedule is the one <em>you</em> can keep.
+  </div>
+
+  <h2>6. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Why does a steady modest cadence beat an occasional burst of brilliant videos?</summary>
+      <p>Compounding — from the algorithm and from audience habit — only happens while you're still publishing, and that can take dozens of videos. Steady output gives regular signals and trains subscribers to expect you; a burst followed by silence teaches both that you're unreliable. It's small frequent deploys over a big-bang release.</p>
+    </details>
+    <details>
+      <summary>What are the two moves that let someone with a day job produce consistently, and what dev concept does each map to?</summary>
+      <p>(1) An idea backlog — a continuously groomed issue tracker you pull from, so you never start from a blank page. (2) Batching plus reusable templates/formats — grouping the same task across videos to pay setup cost once (eliminating context-switch overhead) and composing from a component library/scaffold instead of rebuilding each time.</p>
+    </details>
+    <details>
+      <summary>Name the three common sources of channel burnout and one fix for each.</summary>
+      <p>Blank-page fatigue → keep a groomed idea backlog. Context-switch drain → batch recording/editing and reuse templates. Metric anxiety → check analytics once per upload and judge the process, not each video. A buffer of 1–2 scheduled videos adds slack so a bad week doesn't break the streak.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now run your channel as a pipeline instead of a series of heroic sprints.</strong> Backlog, batch, reusable templates, and a cadence you can hit on a bad week — that's how consistency stops being willpower and starts being a system. Next lesson, <em>Monetization</em>, we map the road to getting paid: the real Partner Program thresholds and what actually unlocks revenue. Not sure what cadence is realistic for you? Ask — we'll size it to your week.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0010-retention-surgery.html">← 0010 · Retention surgery</a>
+    <span class="spacer"></span>
+    <a href="0012-road-to-monetization.html">0012 · Monetization →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>

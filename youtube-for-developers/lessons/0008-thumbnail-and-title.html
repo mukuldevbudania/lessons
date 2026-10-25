@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0008 · Thumbnail &amp; Title — Your Landing Page</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../../assets/theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav top">
+    <a href="../../index.html">↑ Courses</a>
+    <span class="muted">· YouTube for Developers</span>
+    <span class="spacer"></span>
+    <a href="../index.html">Course Home ▸</a>
+  </nav>
+
+  <p class="eyebrow">Lesson 0008 · Package <span class="level intermediate">Intermediate</span></p>
+  <h1>Thumbnail &amp; Title — Your Landing Page</h1>
+  <p class="lede">Your video is the product; the thumbnail and title are its landing page — and nobody installs a product whose landing page they scrolled past.</p>
+
+  <p>This one is faceless-friendly and takes about <strong>7 minutes</strong>. You've just edited your first cut (Lesson 0007), so the build is done. Today you make the thing that decides whether anyone <em>clicks</em> it. Your win: a repeatable recipe for a readable thumbnail and a value-signalling title you can produce in free tools like Canva or GIMP — without crossing into clickbait that burns trust.</p>
+
+  <h2>1. Why packaging, not the video, drives the first click</h2>
+  <p>Back in Lesson 0001 we split the job in two: the <em>title + thumbnail</em> control click-through rate (CTR), and the <em>video</em> controls retention. Packaging is that entire first stage. YouTube shows your thumbnail to a batch of viewers; the fraction who click is your CTR. A low CTR tells the recommender "nobody wants this," and the video stops being shown — no matter how good the content behind it is.</p>
+  <p>So a finished edit sitting behind a weak thumbnail is like shipping a solid service that never gets traffic. The code is fine. The front door is the problem.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Extend the funnel from Lesson 0001. The thumbnail + title are your <strong>landing page above the fold</strong>: a viewer gives it a glance of attention, decides in under a second, and either clicks or bounces. You already know a landing page with a vague headline and a cluttered hero image converts badly. CTR is literally that conversion rate — <code>clicks / impressions</code> — and you optimize it the same way: one clear value proposition, one focal point, no noise.
+  </div>
+
+  <h2>2. Clarity over clickbait — the trust contract</h2>
+  <p>It's tempting to over-promise to win the click. Resist it. The thumbnail makes a promise; the first 30 seconds of the video must pay it off. If the click was earned by a promise the video can't keep, viewers bounce fast — and <strong>retention collapses</strong>, which is the signal that actually sustains reach. A clickbait title spikes CTR and then quietly kills the video.</p>
+  <p>The target is <em>honest curiosity</em>: make the real value obvious and intriguing, not exaggerated. "I rewrote our deploy script in Rust — here's what broke" beats "This ONE trick DESTROYED our pipeline!!!" because the first viewer who clicks is the exact viewer who'll stay.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    Clickbait is a <strong>cache that returns stale data</strong>: the first read looks fast and great, but every downstream consumer gets burned and stops trusting it. An honest thumbnail is a correct cache — the promise on the label matches what's inside, so the retention "reads" behind it succeed and YouTube keeps serving you traffic.
+  </div>
+
+  <h2>3. Making a readable thumbnail: big text, high contrast, one idea</h2>
+  <p>A thumbnail is viewed tiny, on a phone, in a crowded grid, in under a second. Design for that worst case, not for how it looks full-screen in your editor. Three rules carry almost all the weight:</p>
+  <ul class="plain">
+    <li><strong>One idea.</strong> A thumbnail communicates exactly one thing. If you're cramming two concepts, you have two thumbnails fighting — pick one.</li>
+    <li><strong>Big text, few words.</strong> Three or four words max, large enough to read on a phone. Treat it like a log line that must be legible at a glance, not a paragraph.</li>
+    <li><strong>High contrast.</strong> Make the subject pop off the background. Dark-on-light or light-on-dark; avoid a busy screenshot as the whole frame — zoom into the one line of code or the one chart that matters.</li>
+  </ul>
+  <p>For a faceless screen-recording channel, a strong pattern is: a bold 3-word label on one side, and a cropped, high-contrast slice of the actual thing (terminal output, a diagram, a diff) on the other. You don't need a face.</p>
+
+  <div class="clickpath">
+    Free toolchain: <strong>Canva</strong> (canva.com) → start a <strong>1280×720 Custom size</strong> → drag a solid/gradient background → add a <strong>large bold text layer</strong> (3–4 words) → drop in your cropped screenshot → export as <strong>PNG</strong>. Prefer offline/open-source? <strong>GIMP</strong> (gimp.org): <em>File → New</em> at 1280×720, Text tool for the big label, paste your screenshot on its own layer, <em>File → Export As</em> → <code>.png</code>.
+  </div>
+
+  <p>Keep it under YouTube's limits: 1280×720 (16:9), under 2&nbsp;MB, PNG or JPG. Squint test: shrink it to grid size and ask a non-dev to tell you the one idea in a second. If they can't, simplify.</p>
+
+  <h2>4. Titles that signal value — and A/B thinking</h2>
+  <p>The title is the other half of the landing page. It should front-load the <em>value</em> and the <em>specific</em> thing, because the first words are what survive truncation on mobile. A few patterns that signal value honestly:</p>
+  <table>
+    <tr><th>Pattern</th><th>Example</th><th>Why it works</th></tr>
+    <tr><td>Outcome + specificity</td><td>Cut our CI time from 12 min to 90 s</td><td>Concrete numbers promise a concrete payoff.</td></tr>
+    <tr><td>Problem the viewer has</td><td>Why your Docker build is slow (and the fix)</td><td>Names the pain the target viewer already feels.</td></tr>
+    <tr><td>Honest curiosity gap</td><td>I replaced Redis with Postgres — here's what happened</td><td>Opens a loop without lying; the video closes it.</td></tr>
+  </table>
+  <p>Put the keyword people would <em>search</em> near the front, keep it readable (aim ~60 characters so it isn't clipped), and skip ALL-CAPS and emoji spam — they read as spam to exactly the technical audience you want.</p>
+
+  <div class="analogy">
+    <span class="tag">In your world</span>
+    "A/B thinking" here is just <strong>experiment-driven development</strong>. You can't eyeball the winner — treat two thumbnail/title variants as a controlled test. YouTube's built-in <strong>Test &amp; Compare</strong> feature serves up to three thumbnails and measures which earns the most watch time, like a feature flag rolling a variant to a slice of traffic and reading the metric. Form a hypothesis, let the data decide, keep the winner.
+  </div>
+
+  <div class="callout">
+    <span class="tag">Primary source</span>
+    YouTube's own guidance on thumbnails, specs, and testing: <a href="https://support.google.com/youtube/answer/72431">Add video thumbnails — YouTube Help</a>. For the built-in A/B tool, see <a href="https://support.google.com/youtube/answer/14350631">Test &amp; Compare thumbnails — YouTube Help</a>. When a marketing blog quotes different specs or "rules," trust these pages.
+  </div>
+
+  <h2>5. Retrieval check (answer out loud first)</h2>
+  <div class="quiz">
+    <details>
+      <summary>Which metric does packaging (thumbnail + title) control, and what happens when it's low?</summary>
+      <p>Click-through rate (CTR). A low CTR signals the recommender that viewers don't want the video, so YouTube stops showing it — regardless of how good the content is.</p>
+    </details>
+    <details>
+      <summary>Why does clickbait hurt even though it raises CTR?</summary>
+      <p>It wins the click with a promise the video can't keep, so viewers bounce in the first seconds. That tanks retention — the signal that actually sustains reach — and the video dies after the initial spike.</p>
+    </details>
+    <details>
+      <summary>Name the three rules for a readable thumbnail.</summary>
+      <p>One idea only; big text with few words (3–4, legible on a phone); high contrast so the subject pops. A faceless creator can satisfy all three with a bold label plus a cropped, high-contrast screenshot.</p>
+    </details>
+  </div>
+
+  <div class="teacher">
+    👩‍🏫 <strong>You can now design a thumbnail and write a title that earns an honest click.</strong> You've got the recipe — one idea, big high-contrast text, a value-signalling title — plus A/B thinking to let data pick the winner. Next up, Lesson 0009 · <em>Publish &amp; analytics</em>: we actually ship the video and read the numbers that tell you whether the packaging worked. Stuck on a thumbnail idea? Describe your video and I'll help you draft one.
+  </div>
+
+  <nav class="nav bottom">
+    <a href="0007-edit-first-cut.html">← 0007 · Edit the first cut</a>
+    <span class="spacer"></span>
+    <a href="0009-publish-and-analytics.html">0009 · Publish &amp; analytics →</a>
+    <span class="muted">·</span>
+    <a href="../mission.html">mission</a>
+  </nav>
+
+</div>
+</body>
+</html>
